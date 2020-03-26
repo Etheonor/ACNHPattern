@@ -1,2 +1,2 @@
-# Sweeter
-Sweetter, Twitter without the bitter !
+# Sweetter
+Twitter without the bitter !
