@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'gatsby';
 
 const Footer = () => {
-	return <footer>© {new Date().getFullYear()}, Sweetter</footer>;
+	return (<footer><div>© {new Date().getFullYear()}, Sweetter / <Link to='/about/'>About</Link></div></footer>);
 };
 
 export default Footer;

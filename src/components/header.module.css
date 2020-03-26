@@ -1,11 +1,11 @@
 .logo {
 	max-width: 100px;
 	float: left;
-	margin: 10px 15px 0 0;
+	margin: 0 15px 0 0;
 }
 
 .header {
-	background: rgb(29, 161, 242);
+	background: rgb(56,161,243);
 	margin-bottom: 1.45rem;
 	height: 100%;
 }

@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
-import Menu from './menu';
 import Footer from './footer';
 import './layout.css';
 import Helmet from 'react-helmet';
@@ -38,9 +37,6 @@ const Layout = ({ children }) => {
 
 			<div className="top">
 				<Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.description} />
-			</div>
-			<div className="left">
-				
 			</div>
 			<div className="main">
 				<div
