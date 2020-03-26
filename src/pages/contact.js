@@ -11,7 +11,8 @@ const Contact = () => (
 		<SEO title="Contact" />
 		<h1>Contact page</h1>
         <p>You want more information about Sweetter ? Please feel free to contact me with this form!</p>
-		<form name="contact" method="POST" data-netlify-recaptcha="true">
+		<form name="contact" method="POST" netlify  data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
 			<p>
 				<label>
 					Your Name: <input type="text" name="name" />
