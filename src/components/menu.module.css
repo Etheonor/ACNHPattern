@@ -1,0 +1,59 @@
+.pets::before {
+	content: url('./../images/pets.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+
+.fun::before {
+	content: url('./../images/fun.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+.lifestyle::before {
+	content: url('./../images/lifestyle.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+.world::before {
+	content: url('./../images/world.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+.food::before {
+	content: url('./../images/food.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
+
+.menu {
+	list-style: none;
+	font-size: 19px;
+	float: right;
+	margin: 25px 0 0 0;
+	border-bottom: 1px white solid;
+}
+
+.menu li {
+	float: left;
+	margin-right: 25px;
+}
+
+.menu a {
+	text-decoration: none;
+    color: white;
+    transition: 0.1s ease;
+}
+
+.menu a:hover {
+    color: black;
+}

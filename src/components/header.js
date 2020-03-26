@@ -1,43 +1,22 @@
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import logo from './../images/sweetter-logo.png';
+import styles from './header.module.css';
+import Menu from './menu'
 
 const Header = ({ siteTitle, siteDescription }) => (
-	<header
-		style={{
-			background: `rgb(29, 161, 242)`,
-      marginBottom: `1.45rem`,
-      height:`100%`
-		}}
-	>
-		<div
-			style={{
-				margin: `0 auto`,
-				maxWidth: 960,
-				padding: `1.45rem 1.0875rem`
-			}}
-		>
-			<h1 style={{ margin: 0 }}>
-				<Link
-					to="/"
-					style={{
-						color: `white`,
-						textDecoration: `none`
-					}}
-				>
+	<header className={styles.header}>
+		<div className={styles.title}>
+			<img className={styles.logo} src={logo} alt="Sweetter logo" />
+			<h1>
+				<Link to="/" className={styles.link}>
 					{siteTitle}
 				</Link>
 			</h1>
-			<h2
-				style={{
-					color: `white`,
-					textDecoration: `none`,
-					margin: 0
-				}}
-			>
-				{siteDescription}
-			</h2>
+			<h2>{siteDescription}</h2>
 		</div>
+    <Menu className={styles.menu}/>
 	</header>
 );
 

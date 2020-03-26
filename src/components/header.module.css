@@ -1,0 +1,35 @@
+.logo {
+	max-width: 100px;
+	float: left;
+	margin: 10px 15px 0 0;
+}
+
+.header {
+	background: rgb(29, 161, 242);
+	margin-bottom: 1.45rem;
+	height: 100%;
+}
+
+.title {
+    display: inline-block;
+    width: 400px;
+    margin:15px 0 0 15px;
+}
+
+.title h1 {
+    margin: 10px 0 10px 0;
+}
+
+.title h2 {
+	color: white;
+	text-decoration: none;
+    margin: 0;
+    font-size: 20px;
+}
+
+.link {
+	color: white;
+	text-decoration: none;
+}
+
+

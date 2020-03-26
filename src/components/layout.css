@@ -15,7 +15,7 @@ body {
   grid-template-areas: "top top"
   "left main"
   "bottom bottom";
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns:  1fr 4fr;
   grid-template-rows: 160px 1fr 80px;
 }
 .container > div {
@@ -27,9 +27,11 @@ body {
 }
 .left {
   grid-area: left;
+  margin-top: 25px;
 }
 .main {
   grid-area: main;
+  margin-top: 25px;
 }
 .bottom {
   grid-area: bottom;

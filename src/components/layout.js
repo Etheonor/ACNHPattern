@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
-import LeftMenu from './leftMenu';
+import Menu from './menu';
 import Footer from './footer';
 import './layout.css';
 import Helmet from 'react-helmet';
@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
 				<Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.description} />
 			</div>
 			<div className="left">
-				<LeftMenu />
+				
 			</div>
 			<div className="main">
 				<div
