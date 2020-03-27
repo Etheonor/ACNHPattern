@@ -28,7 +28,7 @@ const Contact = () => (
 			</p>
 			<p>
 				<label>
-					Message: <textarea name="message" />
+					Message: <textarea name="message" style={{width: '250px', height: '150px'}}/>
 				</label>
 			</p>
 			<p>
