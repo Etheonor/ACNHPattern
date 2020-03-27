@@ -23,6 +23,10 @@
 	letter-spacing: 2px;
 }
 
+.title a:hover{
+	text-decoration: none;
+}
+
 .title h2 {
 	color: white;
 	text-decoration: none;
