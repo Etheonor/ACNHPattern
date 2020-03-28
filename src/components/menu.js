@@ -5,11 +5,11 @@ import styles from './menu.module.css'
 const Menu = () => {
 	return (
         <ul className={styles.menu}>
-            <li className={styles.pets}><Link to='/cute-pets/'>Cute Pets</Link></li>
-            <li className={styles.world}><Link to='/beautiful-world/'>Beautiful World</Link></li>
-            <li className={styles.lifestyle}><Link to='/cool-lifestyle/'>Cool Lifestyle</Link></li>
-            <li className={styles.food}><Link to='/delicious-food/'>Delicious Food</Link></li>
-            <li className={styles.fun}><Link to='/funny-things/'>Funny Things</Link></li>
+            <li className={styles.catPets}><Link to='/cute-pets/'>Cute Pets</Link></li>
+            <li className={styles.catWorld}><Link to='/beautiful-world/'>Beautiful World</Link></li>
+            <li className={styles.catLifestyle}><Link to='/cool-lifestyle/'>Cool Lifestyle</Link></li>
+            <li className={styles.catFood}><Link to='/delicious-food/'>Delicious Food</Link></li>
+            <li className={styles.catFun}><Link to='/funny-things/'>Funny Things</Link></li>
         </ul>
     )
 };

@@ -1,43 +1,43 @@
-.pets::before {
+.catPets::before {
 	content: url('./../images/pets.png');
 	display: inline-flex;
-	width: 35px;
+	width: 28px;
 	vertical-align: text-bottom;
 	margin-right: 10px;
 }
 
-.fun::before {
+.catFun::before {
 	content: url('./../images/fun.png');
 	display: inline-flex;
-	width: 35px;
+	width: 28px;
 	vertical-align: text-bottom;
 	margin-right: 10px;
 }
-.lifestyle::before {
+.catLifestyle::before {
 	content: url('./../images/lifestyle.png');
 	display: inline-flex;
-	width: 35px;
+	width: 28px;
 	vertical-align: text-bottom;
 	margin-right: 10px;
 }
-.world::before {
+.catWorld::before {
 	content: url('./../images/world.png');
 	display: inline-flex;
-	width: 35px;
+	width: 28px;
 	vertical-align: text-bottom;
 	margin-right: 10px;
 }
-.food::before {
+.catFood::before {
 	content: url('./../images/food.png');
 	display: inline-flex;
-	width: 35px;
+	width: 28px;
 	vertical-align: text-bottom;
 	margin-right: 10px;
 }
 
 .menu {
 	list-style: none;
-	font-size: 19px;
+	font-size: 14px;
 	float: right;
 	margin: 25px 0 0 0;
 	border-bottom: 1px white solid;
@@ -51,10 +51,11 @@
 .menu a {
 	text-decoration: none;
     color: white;
-    transition: 0.1s ease;
+	transition: 0.1s ease;
 }
 
 .menu a:hover{
 	color: black;
 	text-decoration: none;
+	transform: perspective(1px) translateZ(0);
 }

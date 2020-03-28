@@ -1,0 +1,13 @@
+.footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.footerMenu {
+    margin-left: 15px;
+}
+
+.donate {
+
+    margin: 0 15px 0 auto;
+}
