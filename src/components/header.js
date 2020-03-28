@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import logo from './../images/sweetter-logo.png';
 import styles from './header.module.css';
-import Menu from './menu'
+import Menu from './menu';
 
 const Header = ({ siteTitle, siteDescription }) => (
 	<header className={styles.header}>
@@ -16,7 +16,7 @@ const Header = ({ siteTitle, siteDescription }) => (
 			</h1>
 			<h2>{siteDescription}</h2>
 		</div>
-    <Menu className={styles.menu}/>
+		<Menu className={styles.menu} />
 	</header>
 );
 
