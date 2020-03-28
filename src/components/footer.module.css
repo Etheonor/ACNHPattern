@@ -3,10 +3,14 @@
 }
 
 .footerMenu {
-    margin-left: 15px;
+    margin:auto 0 auto 15px;
 }
 
 .donate {
-    margin: 0 15px 0 auto;
+    margin: auto 15px auto auto;
     transition: 0.1s ease-in;
+}
+
+.donate form {
+    margin:auto;
 }

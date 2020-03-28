@@ -47,6 +47,7 @@ const Layout = ({ children }) => {
 					}}
 				>
 					<main>{children}</main>
+					
 				</div>
 			</div>
 			<footer className="bottom">
