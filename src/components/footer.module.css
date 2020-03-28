@@ -9,4 +9,5 @@
 
 .donate {
     margin: 0 15px 0 auto;
+    transition: 0.1s ease-in;
 }
