@@ -15,9 +15,6 @@ body {
 	grid-template-areas: "top" "main" "bottom";
 	grid-template-rows: 100px 1fr 80px;
 }
-.container > div {
-	/*border: 1px dashed #888;*/
-}
 
 .top {
 	grid-area: top;
