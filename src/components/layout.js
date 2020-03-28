@@ -49,9 +49,9 @@ const Layout = ({ children }) => {
 					<main>{children}</main>
 				</div>
 			</div>
-			<div className="bottom">
+			<footer className="bottom">
 				<Footer />
-			</div>
+			</footer>
 		</div>
 	);
 };

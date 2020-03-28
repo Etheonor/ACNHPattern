@@ -9,24 +9,22 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 .container {
-	display: grid;
-	width: 100%;
-	height: 100%;
-	grid-template-areas: "top" "main" "bottom";
-	grid-template-rows: 100px 1fr 80px;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
 .top {
-	grid-area: top;
+	height: 120px;
 }
 
 .main {
-	grid-area: main;
 	margin: 25px auto auto auto;
+	flex-grow: 1;
 }
 
 .main h1 {
-	text-align:center;
+	text-align: center;
 }
 
 .bottom {
@@ -67,7 +65,7 @@ a {
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects;
 	text-decoration: none;
-	color: #38A1F3;
+	color: #38a1f3;
 }
 a:active,
 a:hover {
