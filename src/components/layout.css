@@ -24,6 +24,11 @@ body {
 	grid-area: main;
 	margin: 25px auto auto auto;
 }
+
+.main h1 {
+	text-align:center;
+}
+
 .bottom {
 	grid-area: bottom;
 }

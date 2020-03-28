@@ -1,0 +1,7 @@
+.button::before {
+    content:url('./../../images/money.png');
+    display: inline-flex;
+	width: 38px;
+	vertical-align: text-bottom;
+	margin-right: 10px;
+}
