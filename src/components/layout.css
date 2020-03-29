@@ -7,6 +7,7 @@ body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #fafeff;
 }
 .container {
 	display: flex;
@@ -14,13 +15,16 @@ body {
 	flex-direction: column;
 }
 
-.top {
-	height: 120px;
-}
-
 .main {
 	margin: 25px auto auto auto;
 	flex-grow: 1;
+	border-radius: 10px;
+	background-color: white;
+	width: 600px;
+	-webkit-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+	-moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+	box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+	padding: 20px;
 }
 
 .main h1 {
