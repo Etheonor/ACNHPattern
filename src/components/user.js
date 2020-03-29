@@ -7,30 +7,23 @@ import 'firebase/firestore';
 
 class User extends Component {
 	state = {
-		user: null
+		user: null,
+		test: []
+	};
+
+	checkStorage = () => {
+		console.log(firebase.auth().currentUser);
 	};
 
 	componentDidMount() {
-        var user = firebase.auth().currentUser;
-        console.log(user)
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
-                this.setState({ user: user.displayName });
+				console.log('test');
+				this.setState({ user: { username: user.displayName, email: user.email, photo: user.photoURL } });
 				// User is signed in.
-				let username = user.displayName;
-				let email = user.email;
-				var emailVerified = user.emailVerified;
-				var photoURL = user.photoURL;
-				var isAnonymous = user.isAnonymous;
-				var uid = user.uid;
-				var providerData = user.providerData;
-				console.log(username, email);
-				// ...
 			} else {
 				// User is signed out.
-				// ...
-				console.log('User is plus la');
-                this.setState({ user: null });
+				this.setState({ user: null });
 			}
 		});
 	}
@@ -44,7 +37,10 @@ class User extends Component {
 				<button size="large" variant="contained" color="primary" onClick={signOut}>
 					log out
 				</button>
-				<p>{this.state.user && `Welcome ${this.state.user}!`}</p>
+				<button size="large" variant="contained" color="primary" onClick={this.checkStorage}>
+					Test
+				</button>
+				<p>{this.state.user && `Welcome ${this.state.user.username}!`}</p>
 			</div>
 		);
 	}
