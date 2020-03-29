@@ -15,6 +15,12 @@ class User extends Component {
 		console.log(firebase.auth().currentUser);
 	};
 
+    shouldComponentUpdate(nextProps,nextState) {
+        if (nextProps === nextState) {
+            return false;
+        }
+        else return true
+    }
 	componentDidMount() {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
