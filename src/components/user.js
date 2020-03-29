@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
+
 // Import Firebase elements and initialize it
 import { firebase, signIn, signOut, writeGlobal } from './../API/Firebase';
 import 'firebase/auth';
 import 'firebase/firestore';
 
 class User extends Component {
+
+	
 	state = {
 		user: null,
 		test: []
@@ -15,12 +18,11 @@ class User extends Component {
 		console.log(firebase.auth().currentUser);
 	};
 
-    shouldComponentUpdate(nextProps,nextState) {
-        if (nextProps === nextState) {
-            return false;
-        }
-        else return true
-    }
+	shouldComponentUpdate(nextProps, nextState) {
+		if (nextProps === nextState) {
+			return false;
+		} else return true;
+	}
 	componentDidMount() {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
