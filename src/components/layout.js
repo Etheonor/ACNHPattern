@@ -13,6 +13,9 @@ import Header from './header';
 import Footer from './footer';
 import './layout.css';
 import Helmet from 'react-helmet';
+import User from './user'
+
+
 
 const Layout = ({ children }) => {
 	const data = useStaticQuery(graphql`
@@ -25,6 +28,9 @@ const Layout = ({ children }) => {
 			}
 		}
 	`);
+
+
+
 
 	return (
 		<div className="container">
@@ -47,9 +53,10 @@ const Layout = ({ children }) => {
 					}}
 				>
 					<main>{children}</main>
-					
+					<User/>
 				</div>
 			</div>
+
 			<footer className="bottom">
 				<Footer />
 			</footer>
