@@ -35,9 +35,6 @@ const Contact = () => (
 				<button type="submit">Send</button>
 			</p>
 		</form>
-
-		<img src={petimg} alt="cute pets" />
-		<Link to="/">Go back to the homepage</Link>
 	</Layout>
 );
 

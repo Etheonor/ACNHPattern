@@ -31,6 +31,14 @@ body {
 	text-align: center;
 }
 
+.homepage:before {
+	content: url('../images/houseColor.png');
+	display: inline-flex;
+	width: 35px;
+	vertical-align: text-bottom;
+	margin-right: 15px;
+}
+
 .bottom {
 	grid-area: bottom;
 }

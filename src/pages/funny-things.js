@@ -11,8 +11,6 @@ const FunnyThings = () => (
 		<SEO title="Funny Things" />
 		<h1>Funny Things</h1>
 		<p>Welcome to Funny Things</p>
-		<img src={funimg} alt="Funny Things" />
-		<Link to="/">Go back to the homepage</Link>
 	</Layout>
 );
 

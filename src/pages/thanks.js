@@ -13,7 +13,6 @@ const Thanks = () => (
 		<img style={{ textAlign: 'center' }} src={heart} alt="heart" />
 		<p>Your donation is making a difference and will help me to improve Sweetter!</p>
 
-		<Link to="/">Go back to the homepage</Link>
 	</Layout>
 );
 

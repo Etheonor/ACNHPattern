@@ -11,8 +11,6 @@ const BeautifulWorld = () => (
 		<SEO title="Beautiful World" />
 		<h1>Beautiful World</h1>
 		<p>Welcome to Beautiful World</p>
-		<img src={worldimg} alt="Beautiful World" />
-		<Link to="/">Go back to the homepage</Link>
 	</Layout>
 );
 

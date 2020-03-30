@@ -11,8 +11,6 @@ const CutePets = () => (
 		<SEO title="Cute Pets" />
 		<h1>Cute Pets</h1>
 		<p>Welcome to Cute Pets</p>
-		<img src={petimg} alt="cute pets" />
-		<Link to="/">Go back to the homepage</Link>
 	</Layout>
 );
 
