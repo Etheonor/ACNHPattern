@@ -1,17 +1,14 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react";
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-
-import foodimg from './../images/food.png';
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const DeliciousFood = () => (
-	<Layout>
-		<SEO title="Delicious Food" />
-		<h1>Delicious Food</h1>
-		<p>Welcome to Delicious Food</p>
-	</Layout>
+  <Layout>
+    <SEO title="Delicious Food" />
+    <h1>Delicious Food</h1>
+    <p>Welcome to Delicious Food</p>
+  </Layout>
 );
 
 export default DeliciousFood;

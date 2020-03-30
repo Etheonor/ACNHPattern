@@ -12,7 +12,7 @@ function reducer(state, action) {
     case "USER": {
       return {
         ...state,
-        user: "test!",
+        user: action.text,
       };
     }
 

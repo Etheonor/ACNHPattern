@@ -15,9 +15,6 @@ import Footer from "./footer";
 import "./layout.css";
 import Helmet from "react-helmet";
 import User from "./user";
-import GlobalContextProvider, {
-  GlobalDispatchContext,
-} from "./../context/GlobalContextProvider";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

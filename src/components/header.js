@@ -11,8 +11,7 @@ import {
 const Header = ({ siteTitle }) => {
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
-  console.log(dispatch);
-  console.log(state);
+
   return (
     <header className={styles.header}>
       <div className={styles.title}>
@@ -29,7 +28,7 @@ const Header = ({ siteTitle }) => {
       >
         Test
       </button>
-      <p>{state.user}</p>
+      <p>{state.user && state.user.username}</p>
       <Menu className={styles.menu} />
     </header>
   );

@@ -1,10 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-
-import petimg from './../images/pets.png'
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const About = () => (
   <Layout>
@@ -12,6 +9,6 @@ const About = () => (
     <h1>Cute Pets</h1>
     <p>Welcome to Cute Pets</p>
   </Layout>
-)
+);
 
-export default About
+export default About;
