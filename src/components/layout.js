@@ -15,7 +15,9 @@ import Footer from "./footer";
 import "./layout.css";
 import Helmet from "react-helmet";
 import User from "./user";
-import GlobalContextProvider, { GlobalDispatchContext } from "./../context/GlobalContextProvider";
+import GlobalContextProvider, {
+  GlobalDispatchContext,
+} from "./../context/GlobalContextProvider";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -40,7 +42,10 @@ const Layout = ({ children }) => {
         </Helmet>
 
         <div className="top">
-          <Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.description} />
+          <Header
+            siteTitle={data.site.siteMetadata.title}
+            siteDescription={data.site.siteMetadata.description}
+          />
         </div>
         <div className="main">
           <div

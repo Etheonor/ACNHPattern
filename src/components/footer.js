@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerMenu}>
-        © {new Date().getFullYear()}, Sweetter / <Link to="/about/">About</Link> /{" "}
-        <Link to="/contact/">Contact me</Link>
+        © {new Date().getFullYear()}, Sweetter / <Link to="/about/">About</Link>{" "}
+        / <Link to="/contact/">Contact me</Link>
       </div>
       <div className={styles.donate}>
         <Donate />

@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import styles from "./header.module.css";
 import Menu from "./menu";
-import { GlobalDispatchContext, GlobalStateContext } from "../context/GlobalContextProvider";
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../context/GlobalContextProvider";
 
 const Header = ({ siteTitle }) => {
   const dispatch = useContext(GlobalDispatchContext);

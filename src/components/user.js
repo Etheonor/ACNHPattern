@@ -24,7 +24,13 @@ class User extends Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         console.log("test");
-        this.setState({ user: { username: user.displayName, email: user.email, photo: user.photoURL } });
+        this.setState({
+          user: {
+            username: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+          },
+        });
         // User is signed in.
       } else {
         // User is signed out.
@@ -36,13 +42,28 @@ class User extends Component {
   render() {
     return (
       <div>
-        <button size="large" variant="contained" color="primary" onClick={signIn}>
+        <button
+          size="large"
+          variant="contained"
+          color="primary"
+          onClick={signIn}
+        >
           ConnectF
         </button>
-        <button size="large" variant="contained" color="primary" onClick={signOut}>
+        <button
+          size="large"
+          variant="contained"
+          color="primary"
+          onClick={signOut}
+        >
           log out
         </button>
-        <button size="large" variant="contained" color="primary" onClick={this.checkStorage}>
+        <button
+          size="large"
+          variant="contained"
+          color="primary"
+          onClick={this.checkStorage}
+        >
           Test
         </button>
         <p>{this.state.user && `Welcome ${this.state.user.username}!`}</p>

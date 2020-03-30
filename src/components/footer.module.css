@@ -1,16 +1,16 @@
 .footer {
-    display:flex;
+  display: flex;
 }
 
 .footerMenu {
-    margin:auto 0 auto 15px;
+  margin: auto 0 auto 15px;
 }
 
 .donate {
-    margin: auto 15px auto auto;
-    transition: 0.1s ease-in;
+  margin: auto 15px auto auto;
+  transition: 0.1s ease-in;
 }
 
 .donate form {
-    margin:auto;
+  margin: auto;
 }
