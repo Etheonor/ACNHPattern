@@ -2,16 +2,9 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React, { useContext } from "react";
 import styles from "./header.module.css";
-import Menu from "./menu";
-import {
-  GlobalDispatchContext,
-  GlobalStateContext,
-} from "../context/GlobalContextProvider";
+import User from "./user";
 
 const Header = ({ siteTitle }) => {
-  const dispatch = useContext(GlobalDispatchContext);
-  const state = useContext(GlobalStateContext);
-
   return (
     <header className={styles.header}>
       <div className={styles.title}>
@@ -21,15 +14,9 @@ const Header = ({ siteTitle }) => {
           </Link>
         </h1>
       </div>
-      <button
-        onClick={() => {
-          dispatch({ type: "USER" });
-        }}
-      >
-        Test
-      </button>
-      <p>{state.user && state.user.username}</p>
-      <Menu className={styles.menu} />
+      <div className={styles.userPanel}>
+        <User />
+      </div>
     </header>
   );
 };

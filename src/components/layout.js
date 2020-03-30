@@ -14,7 +14,7 @@ import Header from "./header";
 import Footer from "./footer";
 import "./layout.css";
 import Helmet from "react-helmet";
-import User from "./user";
+import Menu from "./menu";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -44,6 +44,9 @@ const Layout = ({ children }) => {
             siteDescription={data.site.siteMetadata.description}
           />
         </div>
+        <div className="Categories">
+          <Menu className="menu" />
+        </div>
         <div className="main">
           <div
             style={{
@@ -53,7 +56,6 @@ const Layout = ({ children }) => {
             }}
           >
             <main>{children}</main>
-            <User />
             <Link className="homepage" to="/">
               Homepage
             </Link>

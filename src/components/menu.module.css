@@ -39,9 +39,10 @@
   .menu {
     list-style: none;
     font-size: 14px;
-    margin: 25px 0 0 auto;
+    margin: 25px auto 0 auto;
     border-bottom: 1px white solid;
     max-height: 40px;
+    width: 600px;
   }
 
   .menu li {
@@ -51,12 +52,12 @@
 
   .menu a {
     text-decoration: none;
-    color: white;
+    color: black;
     transition: 0.1s ease;
   }
 
   .menu a:hover {
-    color: black;
+    color: grey;
     text-decoration: none;
     transform: perspective(1px) translateZ(0);
   }

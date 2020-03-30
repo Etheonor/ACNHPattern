@@ -10,6 +10,8 @@ import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider";
 
+import styles from './user.module.css'
+
 const User = () => {
   // CHANGE TO FUNCTIONNAL COMPONENT
   const dispatch = useContext(GlobalDispatchContext);
@@ -43,7 +45,7 @@ const User = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.userPanel}>
       <button size="large" variant="contained" color="primary" onClick={signIn}>
         Connect
       </button>

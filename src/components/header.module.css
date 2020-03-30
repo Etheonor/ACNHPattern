@@ -44,3 +44,8 @@
   color: white;
   text-decoration: none;
 }
+
+.userPanel {
+  float:right;
+  margin: 25px 25px 0 auto;
+}
