@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import styles from "./menu.module.css";
+import styles from "./menu.module.scss";
 
 const Menu = () => {
   return (

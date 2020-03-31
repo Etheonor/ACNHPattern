@@ -12,7 +12,7 @@ import {
 
 import Button from "./buttons/button";
 import food from "../images/food.png";
-import styles from "./user.module.css";
+import styles from "./user.module.scss";
 
 const User = () => {
   // CHANGE TO FUNCTIONNAL COMPONENT

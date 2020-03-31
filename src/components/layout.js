@@ -12,7 +12,7 @@ import { Link } from "gatsby";
 
 import Header from "./header";
 import Footer from "./footer";
-import "./layout.css";
+import styles from "./layout.module.scss";
 import Helmet from "react-helmet";
 import Menu from "./menu";
 
@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <Helmet>
           <link
             href="https://fonts.googleapis.com/css?family=Muli:300i,400,600,700,800,900&display=swap"
@@ -38,30 +38,24 @@ const Layout = ({ children }) => {
           />
         </Helmet>
 
-        <div className="top">
+        <div className={styles.top}>
           <Header
             siteTitle={data.site.siteMetadata.title}
             siteDescription={data.site.siteMetadata.description}
           />
         </div>
-        <div className="Categories">
-          <Menu className="menu" />
-        </div>
-        <div className="main">
-          <div
-            style={{
-              margin: `0 auto`,
-              maxWidth: 960,
-              padding: `0 1.0875rem 1.45rem`,
-            }}
-          >
+
+        <Menu className={styles.menu} />
+
+        <div className={styles.main}>
+          <div>
             <main>{children}</main>
-            <Link className="homepage" to="/">
+            <Link className={styles.homepage} to="/">
               Homepage
             </Link>
           </div>
         </div>
-        <footer className="bottom">
+        <footer className={styles.bottom}>
           <Footer />
         </footer>
       </div>

@@ -1,5 +1,9 @@
+$font-stack: Muli, sans-serif;
+
+$primary-color: #fafeff;
+
 html {
-  font-family: Muli, sans-serif;
+  font-family: $font-stack;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -7,8 +11,10 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafeff;
+  font: 100% $font-stack;
+  background-color: $primary-color;
 }
+
 .container {
   display: flex;
   min-height: 100vh;
@@ -22,10 +28,9 @@ body {
 
 .main {
   margin: 25px auto auto auto;
-  flex-grow: 1;
   border-radius: 10px;
   background-color: white;
-  width: 600px;
+  width: 550px;
   -webkit-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   -moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
@@ -35,7 +40,6 @@ body {
 .main h1 {
   text-align: center;
 }
-
 
 .homepage:before {
   content: url("../images/houseColor.png");

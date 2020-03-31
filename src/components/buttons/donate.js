@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './donate.module.css';
+import styles from './donate.module.scss';
 import donate from './../../images/donate.png';
 
 const Donate = () => {
