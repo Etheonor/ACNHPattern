@@ -17,6 +17,7 @@ const Header = ({ siteTitle }) => {
       <div className={styles.userPanel}>
         <User />
       </div>
+      
     </header>
   );
 };

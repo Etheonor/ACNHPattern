@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 // Import Firebase elements and initialize it
 import { firebase, signIn, signOut } from "./../API/Firebase";
@@ -10,15 +10,17 @@ import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider";
 
-import styles from './user.module.css'
+import Button from "./buttons/button";
+import food from "../images/food.png";
+import styles from "./user.module.css";
 
 const User = () => {
   // CHANGE TO FUNCTIONNAL COMPONENT
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
 
-  const checkStorage = () => {
-    console.log(firebase.auth().currentUser);
+  const checkUser = () => {
+    console.log(state)
   };
 
   useEffect(() => {
@@ -45,28 +47,10 @@ const User = () => {
   }, []);
 
   return (
-    <div className={styles.userPanel}>
-      <button size="large" variant="contained" color="primary" onClick={signIn}>
-        Connect
-      </button>
-      <button
-        size="large"
-        variant="contained"
-        color="primary"
-        onClick={signOut}
-      >
-        log out
-      </button>
-      <button
-        size="large"
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          dispatch({ type: "USER", array: "Build my first Redux app" });
-        }}
-      >
-        Test
-      </button>
+    <div className={styles.userPanel}>{state.user ?<Button image={food} onClick={signOut} label="Log Out" />:<Button image={food} onClick={signIn} label="Log In" />}
+      
+      
+      <Button image={food} onClick={checkUser} label="Test" />
     </div>
   );
 };

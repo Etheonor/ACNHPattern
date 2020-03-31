@@ -1,5 +1,5 @@
 .header {
-  background: rgb(56, 161, 243);
+  /*background: rgb(56, 161, 243);*/
   width: 100%;
   display: inline-flex;
   height: 80px;
@@ -27,6 +27,9 @@
   vertical-align: text-bottom;
 }
 
+.title a {
+  color: rgb(56, 161, 243);
+}
 .title a:hover {
   text-decoration: none;
 }
@@ -46,6 +49,6 @@
 }
 
 .userPanel {
-  float:right;
+  float: right;
   margin: 25px 25px 0 auto;
 }
