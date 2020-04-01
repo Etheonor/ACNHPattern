@@ -11,7 +11,8 @@ import {
 } from "../context/GlobalContextProvider";
 
 import Button from "./buttons/button";
-import food from "../images/food.png";
+import login from "./../icons/System/login-box-line.svg"
+import logout from "./../icons/System/logout-box-line.svg"
 import styles from "./user.module.scss";
 
 const User = () => {
@@ -25,7 +26,7 @@ const User = () => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-      if (user) {
+      if (state.user === null) {
         console.log("test");
         dispatch({
           type: "USER",
@@ -47,10 +48,10 @@ const User = () => {
   }, []);
 
   return (
-    <div className={styles.userPanel}>{state.user ?<Button image={food} onClick={signOut} label="Log Out" />:<Button image={food} onClick={signIn} label="Log In" />}
+    <div className={styles.userPanel}>{state.user ?<Button image={logout} onClick={signOut} label="Log Out" />:<Button image={login} onClick={signIn} label="Log In" />}
       
       
-      <Button image={food} onClick={checkUser} label="Test" />
+      <Button image={login} onClick={checkUser} label="Test" />
     </div>
   );
 };
