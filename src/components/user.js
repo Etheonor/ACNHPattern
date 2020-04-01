@@ -11,8 +11,8 @@ import {
 } from "../context/GlobalContextProvider";
 
 import Button from "./buttons/button";
-import login from "./../icons/System/login-box-line.svg"
-import logout from "./../icons/System/logout-box-line.svg"
+import login from "./../icons/System/login-box-line.svg";
+import logout from "./../icons/System/logout-box-line.svg";
 import styles from "./user.module.scss";
 
 const User = () => {
@@ -21,21 +21,23 @@ const User = () => {
   const state = useContext(GlobalStateContext);
 
   const checkUser = () => {
-    console.log(state)
+    console.log(state);
   };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-      if (state.user === null) {
-        console.log("test");
-        dispatch({
-          type: "USER",
-          text: {
-            username: user.displayName,
-            email: user.email,
-            photo: user.photoURL,
-          },
-        });
+      if (user) {
+        
+          console.log("test");
+          dispatch({
+            type: "USER",
+            text: {
+              username: user.displayName,
+              email: user.email,
+              photo: user.photoURL,
+            },
+          });
+        
       } else {
         // User is signed out.
         //
@@ -48,9 +50,13 @@ const User = () => {
   }, []);
 
   return (
-    <div className={styles.userPanel}>{state.user ?<Button image={logout} onClick={signOut} label="Log Out" />:<Button image={login} onClick={signIn} label="Log In" />}
-      
-      
+    <div className={styles.userPanel}>
+      {state.user ? (
+        <Button image={logout} onClick={signOut} label="Log Out" />
+      ) : (
+        <Button image={login} onClick={signIn} label="Log In" />
+      )}
+
       <Button image={login} onClick={checkUser} label="Test" />
     </div>
   );
