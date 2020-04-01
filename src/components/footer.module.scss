@@ -10,8 +10,9 @@
 .donate {
   margin: auto 15px auto auto;
   transition: 0.1s ease-in;
+
+  form {
+    margin: auto;
+  }
 }
 
-.donate form {
-  margin: auto;
-}

@@ -35,10 +35,18 @@ body {
   -moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   padding: 20px;
+
+  h1 {
+    text-align: center;
+  }
 }
 
-.main h1 {
-  text-align: center;
+a {
+  text-decoration: none;
+  color: rgb(56, 161, 243);
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .homepage:before {
