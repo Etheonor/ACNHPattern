@@ -4,7 +4,7 @@ export const GlobalStateContext = React.createContext();
 export const GlobalDispatchContext = React.createContext();
 
 const initialState = {
-  user: "test",
+  user: null,
 };
 
 function reducer(state, action) {

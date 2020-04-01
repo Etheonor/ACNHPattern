@@ -7,6 +7,7 @@ import User from "./user";
 const Header = ({ siteTitle }) => {
   return (
     <header className={styles.header}>
+      <User />
       <div className={styles.title}>
         <h1>
           <Link to="/" className={styles.link}>
@@ -14,10 +15,7 @@ const Header = ({ siteTitle }) => {
           </Link>
         </h1>
       </div>
-      <div className={styles.userPanel}>
-        <User />
-      </div>
-      
+      <div className={styles.userPanel}></div>
     </header>
   );
 };

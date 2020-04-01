@@ -36,6 +36,10 @@ const Layout = ({ children }) => {
             href="https://fonts.googleapis.com/css?family=Muli:300i,400,600,700,800,900&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
+            rel="stylesheet"
+          />
         </Helmet>
 
         <div className={styles.top}>

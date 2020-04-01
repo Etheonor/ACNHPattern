@@ -25,17 +25,16 @@ const User = () => {
   };
 
   useEffect(() => {
-    return () => firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
-          dispatch({
-            type: "USER",
-            text: {
-              username: user.displayName,
-              email: user.email,
-              photo: user.photoURL,
-            },
-          });
-        
+        dispatch({
+          type: "USER",
+          text: {
+            username: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+          },
+        });
       } else {
         // User is signed out.
         //
