@@ -25,10 +25,8 @@ const User = () => {
   };
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
+    return () => firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        
-          console.log("test");
           dispatch({
             type: "USER",
             text: {
