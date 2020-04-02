@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./header.module.scss";
 import User from "./user";
 

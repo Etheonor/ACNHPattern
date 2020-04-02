@@ -24,8 +24,9 @@ const User = () => {
     console.log(state);
   };
 
-  const dispatchUser = (user) => {
+  const dispatchUser = user => {
     if (state.user === null) {
+      console.log("test2");
       dispatch({
         type: "USER",
         text: {
@@ -35,22 +36,22 @@ const User = () => {
         },
       });
     }
-  }
+  };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         //User sign in
-        dispatchUser(user)
+        console.log("test");
+        dispatchUser(user);
       } else {
         // User is signed out.
-        //
         dispatch({
           type: "USER",
           text: null,
         });
       }
-    });
+    }); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

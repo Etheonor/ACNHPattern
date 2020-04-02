@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
       <div className={styles.container}>
         <Helmet>
           <link
-            href="https://fonts.googleapis.com/css?family=Muli:300i,400,600,700,800,900&display=swap"
+            href="https://fonts.googleapis.com/css?family=Francois+One&display=swap"
             rel="stylesheet"
           />
           <link

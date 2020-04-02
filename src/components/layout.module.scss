@@ -1,9 +1,10 @@
-$font-stack: 'Open Sans', sans-serif;
+$font-core: 'Open Sans', sans-serif;
+$font-title: 'Francois One', sans-serif;
 
 $primary-color: #fafeff;
 
 html {
-  font-family: $font-stack;
+  font-family: $font-core;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -11,8 +12,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font: 100% $font-stack;
+  font: 100% $font-core;
   background-color: $primary-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-title;
 }
 
 .main {
