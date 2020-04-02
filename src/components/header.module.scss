@@ -2,52 +2,19 @@
   /*background: rgb(56, 161, 243);*/
   width: 100%;
   height: 80px;
-
 }
 
-.title {
-  width: 200px;
-  margin: 15px auto auto auto;
-  min-width: 245px;
-  rotate: -5deg;
+h1 {
+  max-width: 300px;
+  margin: 15px auto;
+  display: block;
+}
 
-  h1 {
-    margin: 0 0 10px 0;
-    font-size: 32px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
-    ::before {
-      content: url("./../images/sweetter-logo.png");
-      margin-right: 10px;
-      width: 40px;
-      display: inline-flex;
-      vertical-align: text-bottom;
-    }
-    :hover {
-      text-decoration: none;
-    }
-  }
-
-  a {
-    color: rgb(56, 161, 243);
-  }
-
-  h2 {
-    color: white;
-    text-decoration: none;
-    margin: 0;
-    font-size: 20px;
-    font-weight: 400;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  }
+h1 img {
+  max-width: 100%;
 }
 
 .link {
   color: white;
   text-decoration: none;
-}
-
-.userPanel {
-  float: right;
-  margin: 25px 25px 0 auto;
 }

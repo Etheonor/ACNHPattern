@@ -59,10 +59,10 @@ const Layout = ({ children }) => {
             </Link>
           </div>
         </div>
-        <footer className={styles.bottom}>
-          <Footer />
-        </footer>
       </div>
+      <footer className={styles.bottom}>
+        <Footer />
+      </footer>
     </>
   );
 };

@@ -1,7 +1,11 @@
-$font-core: 'Open Sans', sans-serif;
-$font-title: 'Francois One', sans-serif;
+$font-core: "Open Sans", sans-serif;
+$font-title: "Francois One", sans-serif;
 
 $primary-color: #fafeff;
+
+html, body {
+  height: 100%;
+}
 
 html {
   font-family: $font-core;
@@ -14,13 +18,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font: 100% $font-core;
   background-color: $primary-color;
+  display: flex;
+  flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $font-title;
 }
-
+.container {
+  flex: 1 0 auto;
+}
 .main {
+  height: 100%;
   margin: 0 auto;
   background-color: white;
   padding: 0.5em 4em 1.5em;
@@ -29,7 +43,6 @@ h1, h2, h3, h4, h5, h6 {
   -moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
   border-radius: 10px;
-
   h1 {
     text-align: center;
   }
@@ -49,12 +62,4 @@ a:hover {
   width: 35px;
   vertical-align: text-bottom;
   margin-right: 15px;
-}
-
-.bottom {
-  position:fixed;
-   left:0px;
-   bottom:15px;
-   height:30px;
-   width:100%;
 }
