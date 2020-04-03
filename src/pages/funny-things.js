@@ -1,19 +1,14 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react";
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-
-import funimg from './../images/fun.png';
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 const FunnyThings = () => (
-	<Layout>
-		<SEO title="Funny Things" />
-		<h1>Funny Things</h1>
-		<p>Welcome to Funny Things</p>
-		<img src={funimg} alt="Funny Things" />
-		<Link to="/">Go back to the homepage</Link>
-	</Layout>
+  <Layout>
+    <SEO title="Funny Things" />
+    <h1>Funny Things</h1>
+    <p>Welcome to Funny Things</p>
+  </Layout>
 );
 
 export default FunnyThings;

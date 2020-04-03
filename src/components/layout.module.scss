@@ -1,0 +1,68 @@
+$font-core: "Open Sans", sans-serif;
+$font-title: "Francois One", sans-serif;
+
+$primary-color: #fafeff;
+
+
+html {
+  font-family: $font-core;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: 100% $font-core;
+  background-color: $primary-color;
+  
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-title;
+}
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex-grow: 1;
+}
+
+
+.main {
+  margin: 0 auto;
+  background-color: white;
+  padding: 0.5em 4em 1.5em;
+  max-width: 34em;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+  box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
+  border-radius: 10px;
+  h1 {
+    text-align: center;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: rgb(56, 161, 243);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.homepage:before {
+  content: url("../images/houseColor.png");
+  display: inline-flex;
+  width: 35px;
+  vertical-align: text-bottom;
+  margin-right: 15px;
+}

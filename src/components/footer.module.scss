@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  margin: 1em 1.5em 1em 1.5em;
+}
+
+.footerMenu {
+  margin: auto 0 auto 15px;
+}
+
+.donate {
+  margin: auto 15px auto auto;
+  transition: 0.1s ease-in;
+
+  form {
+    margin: auto;
+  }
+}
