@@ -1,14 +1,14 @@
 import firebase from "firebase";
 
 const config = {
-  apiKey: "AIzaSyC9y4s6duE92OWy4PyarHLx4ryYpQ2v-vY",
+  apiKey: `${process.env.GATSBY_FIREBASE_APIKEY}`,
   authDomain: "acnhpattern.firebaseapp.com",
   databaseURL: "https://acnhpattern.firebaseio.com",
   projectId: "acnhpattern",
   storageBucket: "acnhpattern.appspot.com",
   messagingSenderId: "570831707046",
-  appId: "1:570831707046:web:ce6d5f213b66d02acd0d67",
-  measurementId: "G-VKL24XSD6J",
+  appId: `${process.env.GATSBY_FIREBASE_APPID}`,
+  measurementId: `${process.env.GATSBY_FIREBASE_MEASID}`,
 };
 firebase.initializeApp(config);
 const db = firebase.firestore();
