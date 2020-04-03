@@ -2,6 +2,7 @@
   position: fixed;
   top: 1.5em;
   right: 1.5em;
+  display:block;
 }
 
 @media screen and (max-width: 900px) {
@@ -9,5 +10,6 @@
     display: inline-block;
     position: unset;
     height: 50px;
+    margin: 20px auto 0 auto;
   }
 }

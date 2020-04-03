@@ -15,8 +15,6 @@ const Header = ({ siteTitle }) => {
           </Link>
         </h1>
       </div>
-      <User />
-      <div className={styles.userPanel}></div>
     </header>
   );
 };

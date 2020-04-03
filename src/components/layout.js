@@ -15,6 +15,7 @@ import Footer from "./footer";
 import styles from "./layout.module.scss";
 import Helmet from "react-helmet";
 import Menu from "./menu";
+import User from "./user"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -48,7 +49,7 @@ const Layout = ({ children }) => {
             siteTitle={data.site.siteMetadata.title}
             siteDescription={data.site.siteMetadata.description}
           />
-        </div>
+        </div>     <User />
         <Menu className={styles.menu} />
         <div className={styles.siteContent}>
           <div className={styles.main}>
