@@ -5,6 +5,9 @@
  */
 
 // You can delete this file if you're not using it
+
+
+//Fixed webpack error with firebase, source: https://github.com/firebase/firebase-js-sdk/issues/2222
 exports.onCreateWebpackConfig = ({
     stage,
     actions,
