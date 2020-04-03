@@ -2,8 +2,8 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import styles from "./header.module.scss";
-import User from "./user";
-import logo from "../images/sweetter-logo.png";
+import User from "../user";
+import logo from "./../../images/logo.png";
 
 const Header = ({ siteTitle }) => {
   return (

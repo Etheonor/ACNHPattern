@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 // Import Firebase elements and initialize it
-import { firebase, signIn, signOut } from "./../API/Firebase";
+import { firebase, signIn, signOut } from "../API/Firebase";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -11,11 +11,13 @@ import {
 } from "../context/GlobalContextProvider";
 
 import Button from "./buttons/button";
-import login from "./../icons/System/login-box-line.svg";
+import login from "./../icons/Logos/google-fill.svg";
 import logout from "./../icons/System/logout-box-line.svg";
 import styles from "./user.module.scss";
 
 const User = () => {
+
+  
   // CHANGE TO FUNCTIONNAL COMPONENT
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
@@ -62,7 +64,7 @@ const User = () => {
         <Button image={login} onClick={signIn} label="Log In" />
       )}
 
-      <Button image={login} onClick={checkUser} label="Test" />
+      <Button onClick={checkUser} label="Test" />
     </div>
   );
 };

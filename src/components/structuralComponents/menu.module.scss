@@ -1,6 +1,6 @@
 
   .catPets::before {
-    content: url("./../images/pets.png");
+    content: url("./../../images/pets.png");
     display: inline-flex;
     width: 28px;
     vertical-align: text-bottom;
@@ -8,28 +8,28 @@
   }
 
   .catFun::before {
-    content: url("./../images/fun.png");
+    content: url("./../../images/fun.png");
     display: inline-flex;
     width: 28px;
     vertical-align: text-bottom;
     margin-right: 10px;
   }
   .catLifestyle::before {
-    content: url("./../images/lifestyle.png");
+    content: url("./../../images/lifestyle.png");
     display: inline-flex;
     width: 28px;
     vertical-align: text-bottom;
     margin-right: 10px;
   }
   .catWorld::before {
-    content: url("./../images/world.png");
+    content: url("./../../images/world.png");
     display: inline-flex;
     width: 28px;
     vertical-align: text-bottom;
     margin-right: 10px;
   }
   .catFood::before {
-    content: url("./../images/food.png");
+    content: url("./../../images/food.png");
     display: inline-flex;
     width: 28px;
     vertical-align: text-bottom;

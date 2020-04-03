@@ -13,7 +13,9 @@ const config = {
 firebase.initializeApp(config);
 const db = firebase.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-googleProvider.addScope("https://www.googleapis.com/auth/youtube");
+const facebookProvider = new firebase.auth.FacebookAuthProvider();
+const email = new firebase.auth.EmailAuthProvider();
+//googleProvider.addScope("https://www.googleapis.com/auth/youtube");
 
 const signOut = () => {
   firebase.auth().signOut();

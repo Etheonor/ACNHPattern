@@ -1,7 +1,9 @@
 $font-core: "Open Sans", sans-serif;
 $font-title: "Francois One", sans-serif;
 
-$primary-color: #fafeff;
+$primary-color: antiquewhite;
+$secondary-color: #7298AD;
+$tertiary-color: #D7EDFA;
 
 
 html {
@@ -25,6 +27,7 @@ h4,
 h5,
 h6 {
   font-family: $font-title;
+  color: #4a4a4a;
 }
 .site {
   display: flex;
@@ -39,21 +42,13 @@ h6 {
 
 .main {
   margin: 0 auto;
-  background-color: white;
   padding: 0.5em 4em 1.5em;
-  max-width: 34em;
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
-  box-shadow: 1px 1px 5px 0px rgba(202, 202, 202, 0.54);
-  border-radius: 10px;
-  h1 {
-    text-align: center;
-  }
+  max-width: 100%;
 }
 
 a {
   text-decoration: none;
-  color: rgb(56, 161, 243);
+  color: $secondary-color;
 }
 a:hover {
   text-decoration: underline;
