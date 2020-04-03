@@ -5,7 +5,7 @@ import styles from "./pageSubtitle.module.scss";
 const pageSubtitle = () => {
   return (
     <div className={styles.pageSubtitle}>
-      <h2>Want to find cool patterns ? </h2>
+      <h2>Want to find and share cool patterns ? </h2>
     </div>
   );
 };

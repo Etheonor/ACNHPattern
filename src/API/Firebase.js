@@ -12,10 +12,10 @@ const config = {
 };
 firebase.initializeApp(config);
 const db = firebase.firestore();
+const storage = firebase.storage();
+const storageRef = firebase.storage().ref();
+
 const googleProvider = new firebase.auth.GoogleAuthProvider();
-const facebookProvider = new firebase.auth.FacebookAuthProvider();
-const email = new firebase.auth.EmailAuthProvider();
-//googleProvider.addScope("https://www.googleapis.com/auth/youtube");
 
 const signOut = () => {
   firebase.auth().signOut();
@@ -62,4 +62,29 @@ const writeGlobal = (user, object) => {
     });
 };
 
-export { firebase, signIn, signOut, writeGlobal };
+//---------------STORAGE---------------//
+
+const uploadImg = () => {
+  // Create a reference to 'mountains.jpg'
+  console.log("Upload1");
+  fetch("./../images/gatsby-astronaut.png")
+    .then(response => {
+      console.log(response);
+	  return new Blob([response], { type: "image/png" });
+	  
+	
+    })
+    .then(myblob => {
+		const file = new File([myblob], "my_image.png",{type:"image/png", lastModified:new Date()})
+		console.log(file)
+      // Create a reference to 'mountains.jpg'
+
+      const uploadTask = storageRef
+        .child("images/mountains.png")
+        .put(
+			file
+        );
+    });
+};
+
+export { firebase, signIn, signOut, writeGlobal, uploadImg };
