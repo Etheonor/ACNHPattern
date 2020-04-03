@@ -30,39 +30,36 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <div className={styles.container}>
-        <Helmet>
-          <link
-            href="https://fonts.googleapis.com/css?family=Francois+One&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
-            rel="stylesheet"
-          />
-        </Helmet>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Francois+One&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
+          rel="stylesheet"
+        />
+        <html lang="en" />
+      </Helmet>
 
+      <div className={styles.site}>
         <div className={styles.top}>
           <Header
             siteTitle={data.site.siteMetadata.title}
             siteDescription={data.site.siteMetadata.description}
           />
         </div>
-
         <Menu className={styles.menu} />
-
-        <div className={styles.main}>
-          <div>
-            <main>{children}</main>
+        <div className={styles.siteContent}>
+          <div className={styles.main}>
+            {children}
             <Link className={styles.homepage} to="/">
               Homepage
             </Link>
           </div>
         </div>
-      </div>
-      <footer className={styles.bottom}>
         <Footer />
-      </footer>
+      </div>
     </>
   );
 };
