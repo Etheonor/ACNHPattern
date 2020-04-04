@@ -64,27 +64,9 @@ const writeGlobal = (user, object) => {
 
 //---------------STORAGE---------------//
 
-const uploadImg = () => {
+const uploadImg = file => {
   // Create a reference to 'mountains.jpg'
-  console.log("Upload1");
-  fetch("./../images/gatsby-astronaut.png")
-    .then(response => {
-      console.log(response);
-	  return new Blob([response], { type: "image/png" });
-	  
-	
-    })
-    .then(myblob => {
-		const file = new File([myblob], "my_image.png",{type:"image/png", lastModified:new Date()})
-		console.log(file)
-      // Create a reference to 'mountains.jpg'
-
-      const uploadTask = storageRef
-        .child("images/mountains.png")
-        .put(
-			file
-        );
-    });
+  storageRef.child("images/mountains.png").put(file);
 };
 
 export { firebase, signIn, signOut, writeGlobal, uploadImg };
