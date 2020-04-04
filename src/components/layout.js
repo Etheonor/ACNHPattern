@@ -8,15 +8,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import { Link } from "gatsby";
 
 import Header from "./structuralComponents/header";
 import Footer from "./structuralComponents/footer";
 import styles from "./layout.module.scss";
 import Helmet from "react-helmet";
-import Menu from "./structuralComponents/menu";
 import User from "./user";
-import PageSubtitle from "./structuralComponents/pageSubtitle"
+import PageSubtitle from "./structuralComponents/pageSubtitle";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -51,12 +49,10 @@ const Layout = ({ children }) => {
             siteDescription={data.site.siteMetadata.description}
           />
         </div>
-        <User />
+
         <div className={styles.siteContent}>
-          <PageSubtitle/>
-          <div className={styles.main}>
-            {children}
-          </div>
+          <PageSubtitle />
+          <div className={styles.main}>{children}</div>
         </div>
         <Footer />
       </div>

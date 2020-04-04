@@ -1,0 +1,31 @@
+.uploadDesign {
+  max-width: 600px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  padding: 1em;
+  margin: 1em 0 1em 0;
+  background-color: whitesmoke;
+
+  .uploadImage {
+    border: 1px solid black;
+    max-width: 1280px;
+
+    .uploadImageLabel {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  .categories {
+    h3 {
+      text-align: center;
+    }
+
+    .checkboxes {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: auto;
+      max-width: 33em;
+    }
+  }
+}

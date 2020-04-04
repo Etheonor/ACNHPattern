@@ -12,8 +12,6 @@ const config = {
 };
 firebase.initializeApp(config);
 const db = firebase.firestore();
-const storage = firebase.storage();
-const storageRef = firebase.storage().ref();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -64,9 +62,6 @@ const writeGlobal = (user, object) => {
 
 //---------------STORAGE---------------//
 
-const uploadImg = (file) => {
-  // Create a reference to 'mountains.jpg'
- firebase.storage().ref('images/').child(`${file.name}`).put(file).then(console.log('Upload ok'))
-};
 
-export { firebase, signIn, signOut, writeGlobal, uploadImg };
+
+export { firebase, signIn, signOut, writeGlobal };

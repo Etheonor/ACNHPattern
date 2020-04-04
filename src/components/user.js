@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "gatsby"
 
 // Import Firebase elements and initialize it
 import { firebase, signIn, signOut, uploadImg } from "../API/Firebase";
@@ -16,18 +17,13 @@ import logout from "./../icons/System/logout-box-line.svg";
 import addimg from "./../icons/System/add-circle-line.svg";
 import styles from "./user.module.scss";
 
-
 const User = () => {
   // CHANGE TO FUNCTIONNAL COMPONENT
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
 
-  const checkUser = () => {
+  const uploadDesign = () => {
     console.log(state);
-  };
-
-  const uploadImage = () => {
-    //uploadImg();
   };
 
   const dispatchUser = user => {
@@ -39,6 +35,7 @@ const User = () => {
           username: user.displayName,
           email: user.email,
           photo: user.photoURL,
+          uid: user.uid
         },
       });
     }
@@ -48,7 +45,7 @@ const User = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         //User sign in
-        console.log("test");
+        console.log(user);
         dispatchUser(user);
       } else {
         // User is signed out.
@@ -65,8 +62,8 @@ const User = () => {
       {state.user ? (
         <div>
           <Button image={logout} onClick={signOut} label="Log Out" />
-        
-          <Button image={addimg} onClick={uploadImg} label="Design" />
+
+          <Link to="/upload-pattern"><Button image={addimg} label="Design" /></Link>
         </div>
       ) : (
         <Button image={login} onClick={signIn} label="Log In" />

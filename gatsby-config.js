@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Sweetter`,
-    description: `Twitter, without the bitter`,
+    title: `ACNH Pattern`,
+    description: `Find cool pattern for Animal Crossing`,
     author: `@mbreyton`,
   },
   plugins: [
@@ -55,13 +55,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Sweetter`,
-        short_name: `sweetter`,
+        name: `ACNH Pattern`,
+        short_name: `ACNH Pattern`,
         start_url: `/`,
         background_color: `rgb(29, 161, 242)`,
         theme_color: `rgb(29, 161, 242)`,
         display: `minimal-ui`,
-        icon: `src/images/pets.png`, // This path is relative to the root of the site.
+        icon: `src/images/AC/tree.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
