@@ -64,9 +64,9 @@ const writeGlobal = (user, object) => {
 
 //---------------STORAGE---------------//
 
-const uploadImg = file => {
+const uploadImg = (file) => {
   // Create a reference to 'mountains.jpg'
-  storageRef.child("images/mountains.png").put(file);
+ firebase.storage().ref('images/').child(`${file.name}`).put(file).then(console.log('Upload ok'))
 };
 
 export { firebase, signIn, signOut, writeGlobal, uploadImg };

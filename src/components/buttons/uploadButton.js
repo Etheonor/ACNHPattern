@@ -1,13 +1,25 @@
 import React from "react"
+import {uploadImg} from './../../API/Firebase'
+import writeGlobal from '../../API/Firebase'
+
+let file = null
+
+const uploadImg2 = (file) => {
+  console.log(file)
+  console.log('yeah')
+}
 
 const UploadButton = () => {
 
   const onChangeHandler = () => {
-
+     const input = document.getElementById('fileinput');
+     file = input.files[0]
   }
 
   const fileUploadHandler = () => {
-
+    const input = document.getElementById('fileinput');
+    uploadImg(input.files[0])
+   
   }
   return (
     <div className="container">
@@ -19,6 +31,7 @@ const UploadButton = () => {
               <input
                 type="file"
                 name="file"
+                id="fileinput"
                 className="form-control"
                 onChange={onChangeHandler}
               />

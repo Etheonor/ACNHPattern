@@ -15,7 +15,7 @@ import login from "./../icons/Logos/google-fill.svg";
 import logout from "./../icons/System/logout-box-line.svg";
 import addimg from "./../icons/System/add-circle-line.svg";
 import styles from "./user.module.scss";
-import UploadButton from './buttons/uploadButton'
+
 
 const User = () => {
   // CHANGE TO FUNCTIONNAL COMPONENT
@@ -65,7 +65,7 @@ const User = () => {
       {state.user ? (
         <div>
           <Button image={logout} onClick={signOut} label="Log Out" />
-        <UploadButton/>
+        
           <Button image={addimg} onClick={uploadImg} label="Design" />
         </div>
       ) : (
