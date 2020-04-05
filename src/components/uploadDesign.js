@@ -2,18 +2,15 @@ import React, { useState, useContext } from "react";
 import { firebase, writePattern } from "../API/Firebase";
 import styles from "./uploadDesign.module.scss";
 import Button from "./buttons/button";
-import {
-  GlobalDispatchContext,
-  GlobalStateContext,
-} from "../context/GlobalContextProvider";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const UploadDesign = () => {
-  const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
 
   const [img, setImg] = useState(null);
-  const [cCode, setcCode] = useState('');
-  const [dCode, setdCode] = useState('');
+  const [cCode, setcCode] = useState("");
+  const [dCode, setdCode] = useState("");
+  const [cat, setCat] = useState([]);
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -60,20 +57,30 @@ const UploadDesign = () => {
     setdCode(event.target.value);
   };
 
-  const uploadPattern = () => {
+  const categoryHandler = () => {
+    const checkedBoxes = document.querySelectorAll(
+      "input[name=category]:checked"
+    );
+    const newCat = [];
+    checkedBoxes.forEach(element => {
+      if (element.checked === true) {
+        newCat.push(element.defaultValue);
+      }
+    });
+    setCat(newCat);
+  };
 
-    if (img !== null && cCode !== '' && dCode !== '') {
+  const uploadPattern = () => {
+    if (img !== null && cCode !== "" && dCode !== "" && cat.length > 0) {
       const patternObject = {
         patternImage: img,
-        patternCat: "",
+        patternCat: cat,
         creatorCode: cCode,
         designCode: dCode,
-        user: state.user.username
+        user: state.user.username,
       };
-      writePattern(state.user, patternObject)
-    }
-    else alert('Please fill the form')
-    
+      writePattern(state.user, patternObject);
+    } else alert("Please fill the form");
   };
 
   return (
@@ -97,7 +104,7 @@ const UploadDesign = () => {
             Upload File
           </button>
         </form>
-        {img && <img max-width='500px' src={img} alt="" />}
+        {img && <img max-width="500px" src={img} alt="" />}
       </div>
       {/* UPLOAD IMAGE */}
       {/* CATEGORIES */}
@@ -108,8 +115,9 @@ const UploadDesign = () => {
             <input
               type="checkbox"
               id="category1"
-              name="category1"
+              name="category"
               value="Cloth"
+              onChange={categoryHandler}
             />{" "}
             Cloth
           </label>
@@ -118,8 +126,9 @@ const UploadDesign = () => {
             <input
               type="checkbox"
               id="category2"
-              name="category2"
+              name="category"
               value="Wall"
+              onChange={categoryHandler}
             />{" "}
             Wall
           </label>
@@ -128,8 +137,9 @@ const UploadDesign = () => {
             <input
               type="checkbox"
               id="category3"
-              name="category3"
+              name="category"
               value="Floor"
+              onChange={categoryHandler}
             />{" "}
             Floor
           </label>

@@ -49,10 +49,9 @@ const signIn = callback => {
 //---------------FIRESTORE---------------//
 
 const writePattern = (user, object) => {
-  db.collection("Users") // Write user ID and Sub Id List in Firestore database
-    .doc(user.uid)
-    .collection("UserPatterns")
-    .doc((Date.now() + Math.random()).toString())
+  
+  db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
+    .doc()
     .set(object, { merge: true })
     .then(function() {
       console.log(`Doc successfully written!`);

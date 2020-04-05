@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "gatsby"
 
 // Import Firebase elements and initialize it
-import { firebase, signIn, signOut, uploadImg } from "../API/Firebase";
+import { firebase, signIn, signOut } from "../API/Firebase";
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -22,13 +22,9 @@ const User = () => {
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
 
-  const uploadDesign = () => {
-    console.log(state);
-  };
 
   const dispatchUser = user => {
     if (state.user === null) {
-      console.log("test2");
       dispatch({
         type: "USER",
         text: {
@@ -45,7 +41,6 @@ const User = () => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         //User sign in
-        console.log(user);
         dispatchUser(user);
       } else {
         // User is signed out.

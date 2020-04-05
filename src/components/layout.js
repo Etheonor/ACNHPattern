@@ -13,7 +13,6 @@ import Header from "./structuralComponents/header";
 import Footer from "./structuralComponents/footer";
 import styles from "./layout.module.scss";
 import Helmet from "react-helmet";
-import User from "./user";
 import PageSubtitle from "./structuralComponents/pageSubtitle";
 
 const Layout = ({ children }) => {
