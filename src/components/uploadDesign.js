@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { firebase, writeGlobal } from "../API/Firebase";
+import { firebase, writePattern } from "../API/Firebase";
 import styles from "./uploadDesign.module.scss";
 import Button from "./buttons/button";
 import {
@@ -70,7 +70,7 @@ const UploadDesign = () => {
         designCode: dCode,
         user: state.user.username
       };
-      writeGlobal(state.user, patternObject)
+      writePattern(state.user, patternObject)
     }
     else alert('Please fill the form')
     

@@ -48,9 +48,11 @@ const signIn = callback => {
 
 //---------------FIRESTORE---------------//
 
-const writeGlobal = (user, object) => {
-  db.collection("users") // Write user ID and Sub Id List in Firestore database
+const writePattern = (user, object) => {
+  db.collection("Users") // Write user ID and Sub Id List in Firestore database
     .doc(user.uid)
+    .collection("UserPatterns")
+    .doc((Date.now() + Math.random()).toString())
     .set(object, { merge: true })
     .then(function() {
       console.log(`Doc successfully written!`);
@@ -64,4 +66,4 @@ const writeGlobal = (user, object) => {
 
 
 
-export { firebase, signIn, signOut, writeGlobal };
+export { firebase, signIn, signOut, writePattern };
