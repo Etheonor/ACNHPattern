@@ -2,13 +2,13 @@ import React from "react";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import UploadDesign from '../components/uploadDesign'
+import UploadPattern from '../components/uploadPattern'
 
-const UploadPattern = () => (
+const UploadPatternPage = () => (
   <Layout>
     <SEO title="Upload a new pattern" />
-    <UploadDesign/>
+    <UploadPattern/>
   </Layout>
 );
 
-export default UploadPattern;
+export default UploadPatternPage;

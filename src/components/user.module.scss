@@ -1,14 +1,3 @@
 .userPanel {
- 
-  float:right;
- 
-}
-
-@media screen and (max-width: 900px) {
-  .userPanel {
-    display: inline-block;
-    position: unset;
-    height: 50px;
-    margin: 20px auto 0 auto;
-  }
+  float: right;
 }

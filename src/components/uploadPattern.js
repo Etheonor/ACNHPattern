@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { firebase, writePattern } from "../API/Firebase";
-import styles from "./uploadDesign.module.scss";
+import styles from "./uploadPattern.module.scss";
 import Button from "./buttons/button";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
@@ -11,6 +11,7 @@ const UploadDesign = () => {
   const [cCode, setcCode] = useState("");
   const [dCode, setdCode] = useState("");
   const [cat, setCat] = useState([]);
+  const [dName, setdName] = useState("");
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -39,14 +40,10 @@ const UploadDesign = () => {
 
   const onChangeHandler = () => {
     const input = document.getElementById("fileinput");
-    return input.files[0];
-  };
-
-  const fileUploadHandler = () => {
-    const input = document.getElementById("fileinput");
     if (input.files[0] !== undefined) {
       uploadImg(input.files[0]);
-    } else alert("Sélectionner une image !");
+    } else alert("Select an image!");
+    return input.files[0];
   };
 
   const handleCCode = event => {
@@ -55,6 +52,9 @@ const UploadDesign = () => {
 
   const handleDCode = event => {
     setdCode(event.target.value);
+  };
+  const handleDName = event => {
+    setdName(event.target.value);
   };
 
   const categoryHandler = () => {
@@ -77,10 +77,11 @@ const UploadDesign = () => {
         patternCat: cat,
         creatorCode: cCode,
         designCode: dCode,
+        designName: dName,
         user: state.user.username,
       };
-      writePattern(state.user, patternObject);
-    } else alert("Please fill the form");
+      writePattern(patternObject);
+    } else alert("The form is not complete!");
   };
 
   return (
@@ -96,15 +97,12 @@ const UploadDesign = () => {
               type="file"
               name="file"
               id="fileinput"
-              className="form-control"
+              className={styles.uploadImageButton}
               onChange={onChangeHandler}
             />
           </div>
-          <button width="100%" type="button" onClick={fileUploadHandler}>
-            Upload File
-          </button>
         </form>
-        {img && <img max-width="500px" src={img} alt="" />}
+        {img && <img className={styles.imageUploaded} src={img} alt="" />}
       </div>
       {/* UPLOAD IMAGE */}
       {/* CATEGORIES */}
@@ -146,6 +144,20 @@ const UploadDesign = () => {
         </div>
       </div>
       {/* CATEGORIES */}
+      {/* DESIGN NAME */}
+      <h3>Design Name</h3>
+      <div className={styles.userCode}>
+        <label htmlFor="designName">
+          <input
+            type="text"
+            value={dName}
+            onChange={handleDName}
+            id="creatorCode"
+            name="creatorCode"
+          />
+        </label>
+      </div>
+      {/* DESIGN NAME */}
       {/* CREATOR CODE */}
       <h3>Creator Code</h3>
       <div className={styles.userCode}>
@@ -175,7 +187,7 @@ const UploadDesign = () => {
       </div>
       {/* DESIGN CODE */}
       <Button
-        classname={styles.uploadButton}
+        specialStyle="upload"
         onClick={uploadPattern}
         label="Upload your pattern"
       />

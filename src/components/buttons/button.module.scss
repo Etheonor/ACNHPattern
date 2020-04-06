@@ -1,12 +1,47 @@
 .button {
   border-radius: 50px;
   display: inline-block;
+  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+  background: #7298AD;
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: 4px;
+  font-weight: bold;
+
+  button {
+    display: inline;
+    background: none;
+    color: white;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  img {
+    height: 20px;
+   
+    vertical-align: text-bottom;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(77deg)
+      brightness(104%) contrast(102%);
+  }
+}
+
+.button:hover {
+  background: rgb(56, 161, 243);
+}
+
+
+.uploadButton {
+  border-radius: 50px;
+  display: block;
   padding: 0.5rem 1rem 0.5rem 1rem;
   background: #7298AD;
   transition: all 0.2s;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;
+  width: 150px;
+  margin: auto;
 
   button {
     display: inline;
@@ -26,6 +61,6 @@
   }
 }
 
-.button:hover {
+.uploadButton:hover {
   background: rgb(56, 161, 243);
 }

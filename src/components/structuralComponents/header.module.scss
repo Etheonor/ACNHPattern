@@ -1,17 +1,18 @@
 .header {
   /*background: rgb(56, 161, 243);*/
   width: 100%;
-  min-height: 160px;
+
 }
 
 h1 {
   max-width: 500px;
-  margin: 15px auto;
+  margin: 15px auto 0 auto;
   display: block;
 }
 
 h1 img {
-  max-width: 100%;
+  width: 100%;
+  
 }
 
 .link {

@@ -1,5 +1,35 @@
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.textContainer {
+  display: flex;
+  margin: auto;
+}
+
 .patternCard {
-    width: 400px;
-    height: 300px;
-    border: 1px solid black;
+  display: inline-flex;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+  padding: 1em;
+  margin: 1em;
+  background-color: whitesmoke;
+}
+.patternImage {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  align-self: center;
+  margin: auto;
+}
+
+.item {
+  margin: 0 1em 0 1em;
+  text-align: center;
+  align-self: center;
+}
+
+.patternTitle {
+    text-align: center;
 }

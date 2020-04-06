@@ -48,11 +48,11 @@ const signIn = callback => {
 
 //---------------FIRESTORE---------------//
 
-const writePattern = (user, object) => {
+const writePattern = (patternObject) => {
   
   db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
     .doc()
-    .set(object, { merge: true })
+    .set(patternObject, { merge: true })
     .then(function() {
       console.log(`Doc successfully written!`);
     })
