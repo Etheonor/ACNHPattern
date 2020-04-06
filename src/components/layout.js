@@ -8,6 +8,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from "./structuralComponents/header";
 import Footer from "./structuralComponents/footer";
@@ -41,7 +43,7 @@ const Layout = ({ children }) => {
         />
         <html lang="en" />
       </Helmet>
-
+      <ToastContainer />
       <div className={styles.site}>
         <div className={styles.top}>
           <Header

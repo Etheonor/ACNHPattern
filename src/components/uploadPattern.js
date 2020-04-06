@@ -3,6 +3,8 @@ import { firebase, writePattern } from "../API/Firebase";
 import styles from "./uploadPattern.module.scss";
 import Button from "./buttons/button";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
+import { toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
@@ -12,6 +14,7 @@ const UploadDesign = () => {
   const [dCode, setdCode] = useState("");
   const [cat, setCat] = useState([]);
   const [dName, setdName] = useState("");
+
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -27,6 +30,7 @@ const UploadDesign = () => {
 
       function error(err) {
         console.log(err);
+        toast.error("Something went wrong with the upload :(");
       },
       function complete() {
         alert("Success");
@@ -41,6 +45,7 @@ const UploadDesign = () => {
   const onChangeHandler = () => {
     const input = document.getElementById("fileinput");
     if (input.files[0] !== undefined) {
+
       uploadImg(input.files[0]);
     } else alert("Select an image!");
     return input.files[0];
@@ -81,7 +86,7 @@ const UploadDesign = () => {
         user: state.user.username,
       };
       writePattern(patternObject);
-    } else alert("The form is not complete!");
+    } else toast.error('Some info are missing!')
   };
 
   return (
@@ -91,15 +96,15 @@ const UploadDesign = () => {
         <form method="post" action="#" id="formInput">
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
-              <h3>Upload Your File</h3>
-            </label>
+              <p>Image Upload (500ko max)</p>
+            
             <input
               type="file"
               name="file"
               id="fileinput"
               className={styles.uploadImageButton}
               onChange={onChangeHandler}
-            />
+            /></label>
           </div>
         </form>
         {img && <img className={styles.imageUploaded} src={img} alt="" />}
