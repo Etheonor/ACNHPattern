@@ -21,13 +21,13 @@ const DisplayPatterns = props => {
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
           newState.push(doc.data());
-          newState[newState.length-1].id = doc.id
-          console.log(newState)
+          newState[newState.length - 1].id = doc.id;
         });
         return newState;
       })
       .then(objects => {
-        setCards(objects);
+        const objsort = objects.sort((a, b) => b.likes.length - a.likes.length);
+        setCards(objsort);
       });
   };
 

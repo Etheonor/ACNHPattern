@@ -8,7 +8,7 @@ const Contact = () => (
   <Layout>
     <SEO title="Contact" />
     <div className={styles.Page}>
-      <h1>✉️ Contact page</h1>
+      <h1><span role='img' aria-label='envelope'>✉️</span> Contact page</h1>
       <p>
         Want to contact me about the website? You have an idea that will greatly
         improve #ACNH Pattern? Please feel free to contact me with this form!

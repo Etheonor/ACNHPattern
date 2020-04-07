@@ -31,10 +31,13 @@
 }
 
 .likes {
-  display: inline-flex;
+  position: relative;
+  text-align: center;
+  color: white;
   img {
-    max-height: 35px;
     padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 48px;
   }
   button {
     border: none;
@@ -46,10 +49,17 @@
     -webkit-appearance: none;
     -moz-appearance: none;
   }
+  p {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
 }
 .likes button:hover,
 .likes button:focus {
-  transform: scale(1.2);
+  transform: scale(0.9);
 }
 
 .likes button:active {
@@ -57,5 +67,5 @@
 }
 
 .patternTitle {
-  text-align: center;
+  margin: 1em auto 0 auto;
 }
