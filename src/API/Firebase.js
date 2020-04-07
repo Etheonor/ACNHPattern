@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { toast } from 'react-toastify';
 
 const config = {
   apiKey: `${process.env.GATSBY_FIREBASE_APIKEY}`,
@@ -12,8 +13,6 @@ const config = {
 };
 firebase.initializeApp(config);
 const db = firebase.firestore();
-const storage = firebase.storage();
-const storageRef = firebase.storage().ref();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -50,12 +49,13 @@ const signIn = callback => {
 
 //---------------FIRESTORE---------------//
 
-const writeGlobal = (user, object) => {
-  db.collection("users") // Write user ID and Sub Id List in Firestore database
-    .doc(user.uid)
-    .set(object, { merge: true })
+const writePattern = (patternObject) => {
+  
+  db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
+    .doc()
+    .set(patternObject, { merge: true })
     .then(function() {
-      console.log(`Doc successfully written!`);
+      toast.success("Your pattern has been uploaded!");
     })
     .catch(function(error) {
       console.error("Error writing document: ", error);
@@ -64,9 +64,6 @@ const writeGlobal = (user, object) => {
 
 //---------------STORAGE---------------//
 
-const uploadImg = file => {
-  // Create a reference to 'mountains.jpg'
-  storageRef.child("images/mountains.png").put(file);
-};
 
-export { firebase, signIn, signOut, writeGlobal, uploadImg };
+
+export { firebase, signIn, signOut, writePattern };
