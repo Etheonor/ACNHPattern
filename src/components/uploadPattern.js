@@ -33,7 +33,7 @@ const UploadDesign = () => {
         toast.error("Something went wrong with the upload :(");
       },
       function complete() {
-        alert("Success");
+        toast.info('Image uploaded!')
         document.getElementById("formInput").reset();
         task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
           setImg(downloadURL);
@@ -47,7 +47,7 @@ const UploadDesign = () => {
     if (input.files[0] !== undefined) {
 
       uploadImg(input.files[0]);
-    } else alert("Select an image!");
+    } else toast.warning('Select an image!')
     return input.files[0];
   };
 

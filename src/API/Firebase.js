@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import { toast } from 'react-toastify';
 
 const config = {
   apiKey: `${process.env.GATSBY_FIREBASE_APIKEY}`,
@@ -54,7 +55,7 @@ const writePattern = (patternObject) => {
     .doc()
     .set(patternObject, { merge: true })
     .then(function() {
-      console.log(`Doc successfully written!`);
+      toast.success("Your pattern has been uploaded!");
     })
     .catch(function(error) {
       console.error("Error writing document: ", error);
