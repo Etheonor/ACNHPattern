@@ -12,7 +12,7 @@ const Donate = () => {
 				src={donate}
 				border="0"
 				name="submit"
-				title="Make a Paypal donation to help Sweetter!"
+				title="Make a Paypal donation to help #ACNH Pattern!"
 				alt="Donate with PayPal button"
 			/>
 			<img alt="" border="0" src="https://www.paypal.com/en_FR/i/scr/pixel.gif" width="1" height="1" />

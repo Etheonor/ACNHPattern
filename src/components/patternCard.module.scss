@@ -30,6 +30,32 @@
   align-self: center;
 }
 
+.likes {
+  display: inline-flex;
+  img {
+    max-height: 35px;
+    padding: 0.5rem 1rem;
+  }
+  button {
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    transition: 100ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+.likes button:hover,
+.likes button:focus {
+  transform: scale(1.2);
+}
+
+.likes button:active {
+  transform: scale(0.6);
+}
+
 .patternTitle {
-    text-align: center;
+  text-align: center;
 }

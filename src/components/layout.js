@@ -54,7 +54,6 @@ const Layout = ({ children }) => {
 
         <div className={styles.siteContent}>
           <PageSubtitle />
-          
           <div className={styles.main}>{children}</div>
         </div>
         <Footer />
