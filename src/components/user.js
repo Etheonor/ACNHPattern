@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Link } from "gatsby"
+import { Link } from "gatsby";
 
 // Import Firebase elements and initialize it
 import { firebase, signIn, signOut } from "../API/Firebase";
@@ -22,7 +22,6 @@ const User = () => {
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
 
-
   const dispatchUser = user => {
     if (state.user === null) {
       dispatch({
@@ -31,7 +30,7 @@ const User = () => {
           username: user.displayName,
           email: user.email,
           photo: user.photoURL,
-          uid: user.uid
+          uid: user.uid,
         },
       });
     }
@@ -58,7 +57,9 @@ const User = () => {
         <div>
           <Button image={logout} onClick={signOut} label="Log Out" />
 
-          <Link to="/upload-pattern"><Button image={addimg} label="Design" /></Link>
+          <Link to="/upload-pattern">
+            <Button image={addimg} label="Upload" />
+          </Link>
         </div>
       ) : (
         <Button image={login} onClick={signIn} label="Log In" />

@@ -30,6 +30,42 @@
   align-self: center;
 }
 
+.likes {
+  position: relative;
+  text-align: center;
+  color: white;
+  img {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 48px;
+  }
+  button {
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    transition: 100ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  p {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+}
+.likes button:hover,
+.likes button:focus {
+  transform: scale(0.9);
+}
+
+.likes button:active {
+  transform: scale(0.6);
+}
+
 .patternTitle {
-    text-align: center;
+  margin: 1em auto 0 auto;
 }

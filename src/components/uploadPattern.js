@@ -84,6 +84,7 @@ const UploadDesign = () => {
         designCode: dCode,
         designName: dName,
         user: state.user.username,
+        likes: []
       };
       writePattern(patternObject);
     } else toast.error('Some info are missing!')
@@ -96,7 +97,7 @@ const UploadDesign = () => {
         <form method="post" action="#" id="formInput">
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
-              <p>Image Upload (500ko max)</p>
+              <p><span role='img' aria-label='camera'>📷</span> Image Upload (500ko max)</p>
             
             <input
               type="file"

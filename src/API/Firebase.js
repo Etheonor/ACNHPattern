@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const config = {
   apiKey: `${process.env.GATSBY_FIREBASE_APIKEY}`,
@@ -17,7 +17,12 @@ const db = firebase.firestore();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 const signOut = () => {
-  firebase.auth().signOut();
+  firebase
+    .auth()
+    .signOut()
+    .then(function() {
+      window.location.reload(true);
+    });
 };
 
 const signIn = callback => {
@@ -31,7 +36,8 @@ const signIn = callback => {
       /*writeGlobal(result.user, {
 				userName: result.user.displayName,
 				userMail: result.user.email
-			});*/
+      });*/
+      window.location.reload(true);
       return result;
     })
     .then(callback)
@@ -49,8 +55,7 @@ const signIn = callback => {
 
 //---------------FIRESTORE---------------//
 
-const writePattern = (patternObject) => {
-  
+const writePattern = patternObject => {
   db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
     .doc()
     .set(patternObject, { merge: true })
@@ -63,7 +68,5 @@ const writePattern = (patternObject) => {
 };
 
 //---------------STORAGE---------------//
-
-
 
 export { firebase, signIn, signOut, writePattern };

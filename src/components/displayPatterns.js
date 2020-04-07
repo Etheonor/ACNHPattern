@@ -21,18 +21,19 @@ const DisplayPatterns = props => {
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
           newState.push(doc.data());
+          newState[newState.length - 1].id = doc.id;
         });
         return newState;
       })
       .then(objects => {
-        setCards(objects);
+        const objsort = objects.sort((a, b) => b.likes.length - a.likes.length);
+        setCards(objsort);
       });
   };
 
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.container}>
-      <p> Welcome patterns {props.category}</p>
       {cards && (
         <div className={styles.displayPatterns}>
           {cards.map((value, index) => {
@@ -44,6 +45,8 @@ const DisplayPatterns = props => {
                 designCode={value.designCode}
                 patternImage={value.patternImage}
                 designName={value.designName}
+                likes={value.likes}
+                object={value.id}
               />
             );
           })}
