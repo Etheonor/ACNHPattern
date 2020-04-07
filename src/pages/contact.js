@@ -8,8 +8,8 @@ const Contact = () => (
     <SEO title="Contact" />
     <h1>Contact page</h1>
     <p>
-      You want more information about Sweetter ? You have an idea that will
-      greatly improve the website? Please feel free to contact me with this
+      Want to contact me about the website? You have an idea that will
+      greatly improve #ACNH Pattern? Please feel free to contact me with this
       form!
     </p>
     <form
