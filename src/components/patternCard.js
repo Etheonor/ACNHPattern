@@ -55,7 +55,7 @@ const PatternCard = props => {
             <p>{props.designCode}</p>
           </div>
           <div className={styles.item}>
-            <h3>Designer:</h3>
+            <h3>Uploader:</h3>
             <p>{props.user}</p>
           </div>
         </div>

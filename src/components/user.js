@@ -15,6 +15,7 @@ import Button from "./buttons/button";
 import login from "./../icons/Logos/google-fill.svg";
 import logout from "./../icons/System/logout-box-line.svg";
 import addimg from "./../icons/System/add-circle-line.svg";
+import searchimg from './../icons/System/search-line.svg'
 import styles from "./user.module.scss";
 
 const User = () => {
@@ -56,14 +57,15 @@ const User = () => {
       {state.user ? (
         <div>
           <Button image={logout} onClick={signOut} label="Log Out" />
-
           <Link to="/upload-pattern">
             <Button image={addimg} label="Upload" />
           </Link>
         </div>
       ) : (
         <Button image={login} onClick={signIn} label="Log In" />
-      )}
+      )}<Link to="/search">
+      <Button image={searchimg} label="Search Designer" />
+    </Link>
     </div>
   );
 };

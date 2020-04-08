@@ -11,7 +11,7 @@ const Thanks = () => (
     <h1>Thank you</h1>
     <img style={{ textAlign: "center" }} src={heart} alt="heart" />
     <p>
-      Your donation is making a difference and will help me to improve Sweetter!
+      Your donation is making a difference and will help me to improve #ACNH Pattern!
     </p>
   </Layout>
 );

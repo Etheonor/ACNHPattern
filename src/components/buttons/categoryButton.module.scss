@@ -1,5 +1,5 @@
 .categoryButton {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: whitesmoke;
   height: 150px;
   width: 150px;
   text-align: center;
@@ -7,8 +7,15 @@
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
-
+  transition: 0.1s ease-in;
+  
   h2 {
     margin: auto;
+    text-decoration: none !important;
   }
+  
+}
+
+.categoryButton:hover{
+  scale: 0.95;
 }

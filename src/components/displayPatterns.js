@@ -2,15 +2,31 @@ import React, { useState, useEffect } from "react";
 import styles from "./displayPatterns.module.scss";
 import PatternCard from "./patternCard";
 import { firebase } from "../API/Firebase";
+import Button from "./buttons/button";
+import nextImg from "../icons/System/arrow-right-line.svg";
 
 const db = firebase.firestore();
 
 const DisplayPatterns = props => {
   const [cards, setCards] = useState([]);
+  const [currentCards, setCurrentCards] = useState([]);
+  let lastCurrentIndex = 0;
 
   useEffect(() => {
     retrievePatterns();
   }, []);
+
+  const nextPage = () => {
+    console.log(lastCurrentIndex);
+  };
+
+  const handleCurrentCards = (cards) => {
+    const newCurrentcards = []
+    for (let i = 0; i < 6; i++) {
+      newCurrentcards.push(cards[i]);
+    }
+    setCurrentCards(newCurrentcards);
+  }
 
   const retrievePatterns = () => {
     const newState = [];
@@ -26,8 +42,10 @@ const DisplayPatterns = props => {
         return newState;
       })
       .then(objects => {
+        const newCurrentcards = [];
         const objsort = objects.sort((a, b) => b.likes.length - a.likes.length);
         setCards(objsort);
+        handleCurrentCards(objects)
       });
   };
 
@@ -36,7 +54,7 @@ const DisplayPatterns = props => {
     <div className={styles.container}>
       {cards && (
         <div className={styles.displayPatterns}>
-          {cards.map((value, index) => {
+          {currentCards.map((value, index) => {
             return (
               <PatternCard
                 key={index}
@@ -52,6 +70,7 @@ const DisplayPatterns = props => {
           })}
         </div>
       )}
+      <Button image={nextImg} onClick={nextPage} label="Next page" />
     </div>
   );
 };
