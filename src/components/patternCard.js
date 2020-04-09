@@ -10,22 +10,27 @@ const PatternCard = props => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
   const patternRef = db.collection("UserPatterns").doc(props.object);
+  const increment = firebase.firestore.FieldValue.increment(1);
   const [like, setLike] = useState({
     isLiked: user ? props.likes.includes(user.uid) : false,
     likeCount: props.likes.length,
   });
 
   const addLike = () => {
-    if (like.isLiked === false && user !== null) {
+    if (props.likes.includes(user.uid) === false && user !== null) {
       patternRef.update({
         likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
+        likeCount: increment
       });
+      {
+        props.updatePatterns();
+      }
       setLike({
         isLiked: true,
         likeCount: like.likeCount + 1,
       });
     } else if (user === null) {
-      toast.error('You have to be logged in to like a pattern!')
+      toast.error("You have to be logged in to like a pattern!");
     }
   };
   return (
@@ -36,14 +41,20 @@ const PatternCard = props => {
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
           <div className={`${styles.item} ${styles.likes}`}>
-            {like.isLiked ? (
-              <img src={imgLike} alt="You liked this pattern" />
+            {user ? (
+              props.likes.includes(user.uid) ? (
+                <img src={imgLike} alt="You liked this pattern" />
+              ) : (
+                <button onClick={addLike}>
+                  <img src={imgNoLike} alt="click to like this pattern" />
+                </button>
+              )
             ) : (
               <button onClick={addLike}>
                 <img src={imgNoLike} alt="click to like this pattern" />
               </button>
             )}
-            <p className={styles.likeCount}>{like.likeCount}</p>
+            <p className={styles.likeCount}>{props.likes.length}</p>
           </div>
         </div>
         <div className={styles.textContainer}>

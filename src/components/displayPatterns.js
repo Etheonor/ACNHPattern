@@ -6,31 +6,47 @@ import Button from "./buttons/button";
 import nextImg from "../icons/System/arrow-right-line.svg";
 
 const db = firebase.firestore();
+const patterns = db.collection('UserPatterns').orderBy('likeCount', "desc").limit(6);
 
 const DisplayPatterns = props => {
   const [cards, setCards] = useState([]);
   const [currentCards, setCurrentCards] = useState([]);
-  let lastCurrentIndex = 0;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     retrievePatterns();
   }, []);
 
+  useEffect(() => {
+    setCurrentCards(cards[currentIndex]);
+    console.log(currentIndex);
+  }, [currentIndex]);
+
   const nextPage = () => {
-    console.log(lastCurrentIndex);
+    if (currentIndex + 1 < cards.length) {
+      setCurrentIndex(currentIndex + 1);
+      window.scrollTo(0, 285);
+    }
+  };
+  const previousPage = () => {
+    if (currentIndex - 1 >= 0) {
+      setCurrentIndex(currentIndex - 1);
+      window.scrollTo(0, 285);
+    }
   };
 
-  const handleCurrentCards = (cards) => {
-    const newCurrentcards = []
-    for (let i = 0; i < 6; i++) {
-      newCurrentcards.push(cards[i]);
-    }
-    setCurrentCards(newCurrentcards);
-  }
+  const chunk = (arr, chunkSize) => {
+    var R = [];
+    for (var i = 0, len = arr.length; i < len; i += chunkSize)
+      R.push(arr.slice(i, i + chunkSize));
+    return R;
+  };
 
   const retrievePatterns = () => {
+    
+
     const newState = [];
-    db.collection("UserPatterns")
+    patterns
       .where("patternCat", "array-contains", props.category)
       .get()
       .then(function(querySnapshot) {
@@ -39,20 +55,20 @@ const DisplayPatterns = props => {
           newState.push(doc.data());
           newState[newState.length - 1].id = doc.id;
         });
+        console.log('DB USED')
         return newState;
       })
       .then(objects => {
-        const newCurrentcards = [];
-        const objsort = objects.sort((a, b) => b.likes.length - a.likes.length);
-        setCards(objsort);
-        handleCurrentCards(objects)
+        const newCards = chunk(objects, 6);
+        setCards(newCards);
+        setCurrentCards(newCards[currentIndex]);
       });
   };
 
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.container}>
-      {cards && (
+      {currentCards && (
         <div className={styles.displayPatterns}>
           {currentCards.map((value, index) => {
             return (
@@ -65,12 +81,18 @@ const DisplayPatterns = props => {
                 designName={value.designName}
                 likes={value.likes}
                 object={value.id}
+                updatePatterns={retrievePatterns}
               />
             );
           })}
         </div>
       )}
-      <Button image={nextImg} onClick={nextPage} label="Next page" />
+      {currentIndex - 1 >= 0 && (
+        <Button image={nextImg} onClick={previousPage} label="Previous page" />
+      )}
+      {currentIndex + 1 < cards.length && (
+        <Button image={nextImg} onClick={nextPage} label="Next page" />
+      )}
     </div>
   );
 };

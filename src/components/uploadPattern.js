@@ -91,6 +91,7 @@ const UploadDesign = () => {
         designName: dName,
         user: state.user.username,
         likes: [],
+        likeCount: 0
       };
       writePattern(patternObject);
     } else toast.error("Some info are missing!");
