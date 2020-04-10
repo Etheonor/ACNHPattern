@@ -12,7 +12,7 @@ const SearchDesigner = props => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    retrieveQuery(props.creator)
+    retrieveQuery(props.creator);
   }, []);
 
   const retrieveQuery = userQuery => {
@@ -81,6 +81,7 @@ const SearchDesigner = props => {
                   patternImage={value.patternImage}
                   designName={value.designName}
                   likes={value.likes}
+                  likeCount={value.likeCount}
                   object={value.id}
                 />
               );
