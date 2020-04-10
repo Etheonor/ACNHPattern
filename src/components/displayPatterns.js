@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./displayPatterns.module.scss";
 import PatternCard from "./patternCard";
 import { firebase } from "../API/Firebase";
-import Button from "./buttons/button";
-import nextImg from "../icons/System/arrow-right-line.svg";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const db = firebase.firestore();
 const ref = db.collection("UserPatterns");
@@ -14,8 +13,6 @@ const DisplayPatterns = props => {
     first: {},
     last: {},
   });
-  const [firstPattern, setFirstPattern] = useState('')
-
 
   const patternPerPage = 6;
 
@@ -24,8 +21,7 @@ const DisplayPatterns = props => {
     .orderBy("likeCount", "desc")
     .limit(patternPerPage);
 
-  const nextPage = () => {
-    window.scrollTo(0, 285);
+  const fetchMoreData = () => {
     retrievePatterns(
       ref
         .where("patternCat", "array-contains", props.category)
@@ -35,23 +31,12 @@ const DisplayPatterns = props => {
     );
   };
 
-  const prevPage = () => {
-    window.scrollTo(0, 285);
-    retrievePatterns(
-      ref
-        .where("patternCat", "array-contains", props.category)
-        .orderBy("likeCount", "desc")
-        .endBefore(docIndex.first)
-        .limitToLast(patternPerPage)
-    );
-  };
-
   useEffect(() => {
     retrievePatterns();
   }, []);
 
   const retrievePatterns = (ref = patterns) => {
-    const newState = [];
+    const newState = [...currentCards];
     ref
       .get()
       .then(function(querySnapshot) {
@@ -65,10 +50,6 @@ const DisplayPatterns = props => {
         return querySnapshot;
       })
       .then(querySnapshot => {
-        if (ref == patterns) {
-          setFirstPattern(querySnapshot.docs[0])
-          console.log(querySnapshot.docs[0])
-        }
         setDocIndex({
           first: querySnapshot.docs[0],
           last: querySnapshot.docs[querySnapshot.docs.length - 1],
@@ -79,30 +60,29 @@ const DisplayPatterns = props => {
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.container}>
-      {currentCards && (
-        <div className={styles.displayPatterns}>
-          {currentCards.map((value, index) => {
-            return (
-              <PatternCard
-                key={index}
-                user={value.user}
-                creatorCode={value.creatorCode}
-                designCode={value.designCode}
-                patternImage={value.patternImage}
-                designName={value.designName}
-                likes={value.likes}
-                likeCount={value.likeCount}
-                object={value.id}
-                updatePatterns={retrievePatterns}
-              />
-            );
-          })}
-        </div>
-      )}
-
-      {firstPattern==docIndex.first && <Button image={nextImg} onClick={prevPage} label="Previous page" />}
-
-      <Button image={nextImg} onClick={nextPage} label="Next page" />
+      <InfiniteScroll
+        dataLength={currentCards.length}
+        next={fetchMoreData}
+        hasMore={true}
+   
+      >
+        {currentCards.map((value, index) => {
+          return (
+            <PatternCard
+              key={index}
+              user={value.user}
+              creatorCode={value.creatorCode}
+              designCode={value.designCode}
+              patternImage={value.patternImage}
+              designName={value.designName}
+              likes={value.likes}
+              likeCount={value.likeCount}
+              object={value.id}
+              updatePatterns={retrievePatterns}
+            />
+          );
+        })}
+      </InfiniteScroll>
     </div>
   );
 };
