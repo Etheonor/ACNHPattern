@@ -64,7 +64,6 @@ const DisplayPatterns = props => {
         dataLength={currentCards.length}
         next={fetchMoreData}
         hasMore={true}
-   
       >
         {currentCards.map((value, index) => {
           return (
