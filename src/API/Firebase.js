@@ -56,7 +56,7 @@ const signIn = callback => {
 //---------------FIRESTORE---------------//
 
 const writePattern = patternObject => {
-  console.log('WRITE PATTERN')
+  console.log("WRITE PATTERN");
   db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
     .doc()
     .set(patternObject, { merge: true })
@@ -65,6 +65,13 @@ const writePattern = patternObject => {
     })
     .catch(function(error) {
       console.error("Error writing document: ", error);
+    });
+  db.collection("UserPatterns")
+    .doc("creatorCodes")
+    .update({
+      creatorCodes: firebase.firestore.FieldValue.arrayUnion(
+        {user: patternObject.creatorCode}
+      ),
     });
 };
 
