@@ -1,12 +1,14 @@
 import React from "react";
 import Layout from "./components/layout";
 import { graphql } from "gatsby";
+import SearchDesigner from './components/searchDesigner'
 
 export default ({ data }) => {
-  const test = data.allSitePage.edges[0].node.context;
+  const elements = data.allSitePage.edges[0].node.context;
   return (
     <Layout>
-      <h1>{test.user}</h1>
+      <h1>{elements.user}</h1>
+      <SearchDesigner creator={elements.user}/>
     </Layout>
   );
 };

@@ -60,6 +60,7 @@ exports.createPages = async ({ actions }) => {
       const { createPage } = actions;
       data.forEach(object => {
         const path = object.user;
+        console.log(path)
         createPage({
           path,
           component: template,
