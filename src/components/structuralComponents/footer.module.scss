@@ -1,6 +1,9 @@
 .footer {
   display: flex;
   margin: 1em 1.5em 1em 1.5em;
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .footerMenu {

@@ -1,11 +1,24 @@
 .displayPatterns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin:auto;
-    
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
 }
 
 .container {
-    text-align: center;
+  text-align: center;
+}
+
+.loadingIcon {
+  width: 30px;
+  animation: spin 1s infinite linear;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

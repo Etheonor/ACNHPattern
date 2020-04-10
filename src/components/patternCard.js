@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./patternCard.module.scss";
 import { firebase } from "../API/Firebase";
 import { toast } from "react-toastify";
@@ -10,22 +10,32 @@ const PatternCard = props => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
   const patternRef = db.collection("UserPatterns").doc(props.object);
+  const increment = firebase.firestore.FieldValue.increment(1);
   const [like, setLike] = useState({
     isLiked: user ? props.likes.includes(user.uid) : false,
-    likeCount: props.likes.length,
+    likeCount: props.likeCount,
   });
 
+  useEffect(() => {
+    setLike({
+      isLiked: user ? props.likes.includes(user.uid) : false,
+      likeCount: props.likeCount,
+    });
+  }, [props.likeCount]);
+
   const addLike = () => {
-    if (like.isLiked === false && user !== null) {
+    if (user !== null && props.likes.includes(user.uid) === false) {
       patternRef.update({
         likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
+        likeCount: increment
       });
+      
       setLike({
         isLiked: true,
         likeCount: like.likeCount + 1,
       });
     } else if (user === null) {
-      toast.error('You have to be logged in to like a pattern!')
+      toast.error("You have to be logged in to like a pattern!");
     }
   };
   return (
@@ -36,8 +46,14 @@ const PatternCard = props => {
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
           <div className={`${styles.item} ${styles.likes}`}>
-            {like.isLiked ? (
-              <img src={imgLike} alt="You liked this pattern" />
+            {user ? (
+              like.isLiked ? (
+                <img src={imgLike} alt="You liked this pattern" />
+              ) : (
+                <button onClick={addLike}>
+                  <img src={imgNoLike} alt="click to like this pattern" />
+                </button>
+              )
             ) : (
               <button onClick={addLike}>
                 <img src={imgNoLike} alt="click to like this pattern" />
@@ -55,7 +71,7 @@ const PatternCard = props => {
             <p>{props.designCode}</p>
           </div>
           <div className={styles.item}>
-            <h3>Designer:</h3>
+            <h3>Uploader:</h3>
             <p>{props.user}</p>
           </div>
         </div>

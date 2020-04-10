@@ -3,8 +3,9 @@ import { firebase, writePattern } from "../API/Firebase";
 import styles from "./uploadPattern.module.scss";
 import Button from "./buttons/button";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
-import { toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import loadingIcon from "../icons/System/loader-4-line.svg";
 
 const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
@@ -14,26 +15,29 @@ const UploadDesign = () => {
   const [dCode, setdCode] = useState("");
   const [cat, setCat] = useState([]);
   const [dName, setdName] = useState("");
-
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
     const task = firebase
       .storage()
       .ref("images/")
-      .child(`${file.name}`)
+      .child('pattern' + Date.now() + Math.floor(Math.random() * 10000))
       .put(file);
 
     task.on(
       "state_changed",
-      function progress(snapshot) {},
+      function progress(snapshot) {
+        setLoadingImage(true);
+      },
 
       function error(err) {
         console.log(err);
         toast.error("Something went wrong with the upload :(");
       },
       function complete() {
-        toast.info('Image uploaded!')
+        setLoadingImage(false);
+        toast.info("Image uploaded!");
         document.getElementById("formInput").reset();
         task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
           setImg(downloadURL);
@@ -44,10 +48,12 @@ const UploadDesign = () => {
 
   const onChangeHandler = () => {
     const input = document.getElementById("fileinput");
-    if (input.files[0] !== undefined) {
 
+    if (input.files[0] !== undefined && input.files[0].size <= 500000) {
       uploadImg(input.files[0]);
-    } else toast.warning('Select an image!')
+    } else if (input.files[0].size > 500000) {
+      toast.warning("Your image is way too big!");
+    } else toast.warning("Select an image!");
     return input.files[0];
   };
 
@@ -84,10 +90,11 @@ const UploadDesign = () => {
         designCode: dCode,
         designName: dName,
         user: state.user.username,
-        likes: []
+        likes: [],
+        likeCount: 0
       };
       writePattern(patternObject);
-    } else toast.error('Some info are missing!')
+    } else toast.error("Some info are missing!");
   };
 
   return (
@@ -97,15 +104,28 @@ const UploadDesign = () => {
         <form method="post" action="#" id="formInput">
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
-              <p><span role='img' aria-label='camera'>📷</span> Image Upload (500ko max)</p>
-            
-            <input
-              type="file"
-              name="file"
-              id="fileinput"
-              className={styles.uploadImageButton}
-              onChange={onChangeHandler}
-            /></label>
+              <p>
+                <span role="img" aria-label="camera">
+                  📷
+                </span>{" "}
+                Image Upload (500ko max)
+              </p>
+              {loadingImage && (
+                <img
+                  className={styles.loadingIcon}
+                  src={loadingIcon}
+                  alt="loading"
+                />
+              )}
+
+              <input
+                type="file"
+                name="file"
+                id="fileinput"
+                className={styles.uploadImageButton}
+                onChange={onChangeHandler}
+              />
+            </label>
           </div>
         </form>
         {img && <img className={styles.imageUploaded} src={img} alt="" />}

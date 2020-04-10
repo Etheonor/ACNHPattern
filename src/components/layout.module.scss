@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Open+Sans:400,700&display=swap');
+
 $font-core: "Open Sans", sans-serif;
 $font-title: "Francois One", sans-serif;
 
@@ -53,9 +55,7 @@ a {
   text-decoration: none;
   color: $secondary-color;
 }
-a:hover {
-  text-decoration: underline;
-}
+
 
 .homepage:before {
   content: url("../images/houseColor.png");

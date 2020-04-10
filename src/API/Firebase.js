@@ -56,6 +56,7 @@ const signIn = callback => {
 //---------------FIRESTORE---------------//
 
 const writePattern = patternObject => {
+  console.log('WRITE PATTERN')
   db.collection("UserPatterns") // Write user ID and Sub Id List in Firestore database
     .doc()
     .set(patternObject, { merge: true })
