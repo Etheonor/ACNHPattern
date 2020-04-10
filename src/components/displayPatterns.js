@@ -6,48 +6,53 @@ import Button from "./buttons/button";
 import nextImg from "../icons/System/arrow-right-line.svg";
 
 const db = firebase.firestore();
-const patterns = db.collection('UserPatterns').orderBy('likeCount', "desc").limit(6);
+const ref = db.collection("UserPatterns");
 
 const DisplayPatterns = props => {
-  const [cards, setCards] = useState([]);
   const [currentCards, setCurrentCards] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [docIndex, setDocIndex] = useState({
+    first: {},
+    last: {},
+  });
+  const [firstPattern, setFirstPattern] = useState('')
+
+
+  const patternPerPage = 6;
+
+  const patterns = ref
+    .where("patternCat", "array-contains", props.category)
+    .orderBy("likeCount", "desc")
+    .limit(patternPerPage);
+
+  const nextPage = () => {
+    window.scrollTo(0, 285);
+    retrievePatterns(
+      ref
+        .where("patternCat", "array-contains", props.category)
+        .orderBy("likeCount", "desc")
+        .startAfter(docIndex.last)
+        .limitToLast(patternPerPage)
+    );
+  };
+
+  const prevPage = () => {
+    window.scrollTo(0, 285);
+    retrievePatterns(
+      ref
+        .where("patternCat", "array-contains", props.category)
+        .orderBy("likeCount", "desc")
+        .endBefore(docIndex.first)
+        .limitToLast(patternPerPage)
+    );
+  };
 
   useEffect(() => {
     retrievePatterns();
   }, []);
 
-  useEffect(() => {
-    setCurrentCards(cards[currentIndex]);
-    console.log(currentIndex);
-  }, [currentIndex]);
-
-  const nextPage = () => {
-    if (currentIndex + 1 < cards.length) {
-      setCurrentIndex(currentIndex + 1);
-      window.scrollTo(0, 285);
-    }
-  };
-  const previousPage = () => {
-    if (currentIndex - 1 >= 0) {
-      setCurrentIndex(currentIndex - 1);
-      window.scrollTo(0, 285);
-    }
-  };
-
-  const chunk = (arr, chunkSize) => {
-    var R = [];
-    for (var i = 0, len = arr.length; i < len; i += chunkSize)
-      R.push(arr.slice(i, i + chunkSize));
-    return R;
-  };
-
-  const retrievePatterns = () => {
-    
-
+  const retrievePatterns = (ref = patterns) => {
     const newState = [];
-    patterns
-      .where("patternCat", "array-contains", props.category)
+    ref
       .get()
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -55,13 +60,19 @@ const DisplayPatterns = props => {
           newState.push(doc.data());
           newState[newState.length - 1].id = doc.id;
         });
-        console.log('DB USED')
-        return newState;
+        console.log("DB USED");
+        setCurrentCards(newState);
+        return querySnapshot;
       })
-      .then(objects => {
-        const newCards = chunk(objects, 6);
-        setCards(newCards);
-        setCurrentCards(newCards[currentIndex]);
+      .then(querySnapshot => {
+        if (ref == patterns) {
+          setFirstPattern(querySnapshot.docs[0])
+          console.log(querySnapshot.docs[0])
+        }
+        setDocIndex({
+          first: querySnapshot.docs[0],
+          last: querySnapshot.docs[querySnapshot.docs.length - 1],
+        });
       });
   };
 
@@ -80,6 +91,7 @@ const DisplayPatterns = props => {
                 patternImage={value.patternImage}
                 designName={value.designName}
                 likes={value.likes}
+                likeCount={value.likeCount}
                 object={value.id}
                 updatePatterns={retrievePatterns}
               />
@@ -87,12 +99,10 @@ const DisplayPatterns = props => {
           })}
         </div>
       )}
-      {currentIndex - 1 >= 0 && (
-        <Button image={nextImg} onClick={previousPage} label="Previous page" />
-      )}
-      {currentIndex + 1 < cards.length && (
-        <Button image={nextImg} onClick={nextPage} label="Next page" />
-      )}
+
+      {firstPattern==docIndex.first && <Button image={nextImg} onClick={prevPage} label="Previous page" />}
+
+      <Button image={nextImg} onClick={nextPage} label="Next page" />
     </div>
   );
 };

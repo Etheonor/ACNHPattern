@@ -40,7 +40,7 @@ const SearchDesigner = props => {
     <div>
       <h2>Search Designer</h2>
       <div className={styles.inputForm}>
-        <label for="site-search">
+        <label htmlfor="site-search">
           Find a designer with his/her designer tag
         </label>
         <input

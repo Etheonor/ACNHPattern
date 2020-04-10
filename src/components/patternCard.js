@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./patternCard.module.scss";
 import { firebase } from "../API/Firebase";
 import { toast } from "react-toastify";
@@ -13,18 +13,23 @@ const PatternCard = props => {
   const increment = firebase.firestore.FieldValue.increment(1);
   const [like, setLike] = useState({
     isLiked: user ? props.likes.includes(user.uid) : false,
-    likeCount: props.likes.length,
+    likeCount: props.likeCount,
   });
 
+  useEffect(() => {
+    setLike({
+      isLiked: user ? props.likes.includes(user.uid) : false,
+      likeCount: props.likeCount,
+    });
+  }, [props.likeCount]);
+
   const addLike = () => {
-    if (props.likes.includes(user.uid) === false && user !== null) {
+    if (user !== null && props.likes.includes(user.uid) === false) {
       patternRef.update({
         likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
         likeCount: increment
       });
-      {
-        props.updatePatterns();
-      }
+      
       setLike({
         isLiked: true,
         likeCount: like.likeCount + 1,
@@ -42,7 +47,7 @@ const PatternCard = props => {
           <h3 className={styles.patternTitle}>{props.designName}</h3>
           <div className={`${styles.item} ${styles.likes}`}>
             {user ? (
-              props.likes.includes(user.uid) ? (
+              like.isLiked ? (
                 <img src={imgLike} alt="You liked this pattern" />
               ) : (
                 <button onClick={addLike}>
@@ -54,7 +59,7 @@ const PatternCard = props => {
                 <img src={imgNoLike} alt="click to like this pattern" />
               </button>
             )}
-            <p className={styles.likeCount}>{props.likes.length}</p>
+            <p className={styles.likeCount}>{like.likeCount}</p>
           </div>
         </div>
         <div className={styles.textContainer}>
