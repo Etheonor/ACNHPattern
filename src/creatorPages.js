@@ -7,7 +7,7 @@ export default ({ data }) => {
   const elements = data.allSitePage.edges[0].node.context;
   return (
     <Layout>
-      <h1>{elements.user}</h1>
+      <h2>{elements.user}</h2>
       <SearchDesigner creator={elements.user}/>
     </Layout>
   );

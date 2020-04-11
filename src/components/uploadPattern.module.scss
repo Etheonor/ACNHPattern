@@ -6,11 +6,15 @@
   background-color: whitesmoke;
 
   .uploadImage {
+    .imgBlock {
+      display: flex;
+      justify-content: center;
+    }
     .imageUploaded {
-      display: block;
-      margin: 20px auto 20px auto;
+      display: inline-block;
+      margin: 20px;
       width: 100%;
-      max-width: 700px;
+      max-width: 200px;
       height: auto;
     }
 
@@ -80,5 +84,11 @@
   }
   label {
     margin-right : 0.5em;
+  }
+}
+
+.userCode {
+  h3 {
+    margin: 0 15px 0 15px;
   }
 }

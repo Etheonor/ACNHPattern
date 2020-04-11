@@ -10,7 +10,7 @@ import loadingIcon from "../icons/System/loader-4-line.svg";
 const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
 
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState([]);
   const [cCode, setcCode] = useState("");
   const [dCode, setdCode] = useState("");
   const [cat, setCat] = useState([]);
@@ -40,7 +40,7 @@ const UploadDesign = () => {
         toast.info("Image uploaded!");
         document.getElementById("formInput").reset();
         task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          setImg(downloadURL);
+          setImg(prevImg => [...prevImg, downloadURL]);
         });
       }
     );
@@ -49,12 +49,24 @@ const UploadDesign = () => {
   const onChangeHandler = () => {
     const input = document.getElementById("fileinput");
 
-    if (input.files[0] !== undefined && input.files[0].size <= 500000) {
-      uploadImg(input.files[0]);
-    } else if (input.files[0].size > 500000) {
+    if (input.files !== undefined) {
+      /*input.files.map(file => {
+        if (file.size < 500000) {
+          console.log('uploading')
+          uploadImg(input.file)
+        }
+      })*/
+      for (let i = 0; i < input.files.length; i++) {
+        uploadImg(input.files[i]);
+        console.log(input.files[i]);
+      }
+
+      //uploadImg(input.files);
+    } else if (input.files.size > 500000) {
       toast.warning("Your image is way too big!");
     } else toast.warning("Select an image!");
-    return input.files[0];
+    console.log(input.files);
+    return input.files;
   };
 
   const handleCCode = event => {
@@ -94,6 +106,15 @@ const UploadDesign = () => {
         likeCount: 0,
       };
       writePattern(patternObject);
+      document.getElementById("formInput").reset();
+      document.getElementById('category1').checked = false;
+      document.getElementById('category2').checked = false;
+      document.getElementById('category3').checked = false;
+      document.getElementById("designCode").value = null;
+      document.getElementById("creatorCode").value = null;
+      document.getElementById("designName").value = null;
+      setImg([])
+
     } else toast.error("Some info are missing!");
   };
 
@@ -108,7 +129,7 @@ const UploadDesign = () => {
                 <span role="img" aria-label="camera">
                   📷
                 </span>{" "}
-                Image Upload (500ko max)
+                Image Upload (5 images and 500ko max)
               </p>
               {loadingImage && (
                 <img
@@ -120,6 +141,7 @@ const UploadDesign = () => {
 
               <input
                 type="file"
+                multiple
                 name="file"
                 id="fileinput"
                 className={styles.uploadImageButton}
@@ -128,7 +150,19 @@ const UploadDesign = () => {
             </label>
           </div>
         </form>
-        {img && <img className={styles.imageUploaded} src={img} alt="" />}
+        <div className={styles.imgBlock}>
+          {img &&
+            img.map((el, index) => {
+              return (
+                <img
+                  key={index}
+                  className={styles.imageUploaded}
+                  src={el}
+                  alt=""
+                />
+              );
+            })}
+        </div>
       </div>
       {/* UPLOAD IMAGE */}
       {/* CATEGORIES */}
@@ -173,49 +207,44 @@ const UploadDesign = () => {
       {/* DESIGN NAME */}
       <div className={styles.userCode}>
         <h3>Design Name</h3>
-        <div>
-          <label htmlFor="designName">
-            <input
-              type="text"
-              value={dName}
-              onChange={handleDName}
-              id="creatorCode"
-              name="creatorCode"
-            />
-          </label>
-        </div>
+
+        <label htmlFor="designName">
+          <input
+            type="text"
+            value={dName}
+            onChange={handleDName}
+            id="designName"
+            name="designName"
+          />
+        </label>
       </div>
       {/* DESIGN NAME */}
       {/* CREATOR CODE */}
       <div className={styles.userCode}>
         <h3>Creator Code</h3>
-        <div>
-          <label htmlFor="creatorCode">
-            <input
-              type="text"
-              value={cCode}
-              onChange={handleCCode}
-              id="creatorCode"
-              name="creatorCode"
-            />
-          </label>
-        </div>
+        <label htmlFor="creatorCode">
+          <input
+            type="text"
+            value={cCode}
+            onChange={handleCCode}
+            id="creatorCode"
+            name="creatorCode"
+          />
+        </label>
       </div>
       {/* CREATOR CODE */}
       {/* DESIGN CODE */}
       <div className={styles.userCode}>
         <h3>Design Code</h3>
-        <div>
-          <label htmlFor="designCode">
-            <input
-              type="text"
-              value={dCode}
-              onChange={handleDCode}
-              id="designCode"
-              name="designCode"
-            />
-          </label>
-        </div>
+        <label htmlFor="designCode">
+          <input
+            type="text"
+            value={dCode}
+            onChange={handleDCode}
+            id="designCode"
+            name="designCode"
+          />
+        </label>
       </div>
       {/* DESIGN CODE */}
       <Button

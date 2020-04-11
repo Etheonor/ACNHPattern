@@ -21,6 +21,12 @@ const About = () => (
         it was send... I wanted a place where everyone can share their work in a
         more structured way.{" "}
       </p>
+      <h2>Can I have a Creator page?</h2>
+      <p>You already have! </p>
+      <p>
+        If you uploaded a design with your creator code, your personnal page is
+        https://www.acnhpattern.com/[YOURCREATORCODE]
+      </p>
       <h2>How did you build it?</h2>
       <p>
         With great softwares! I'm new in web development and I wanted to improve

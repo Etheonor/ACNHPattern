@@ -47,7 +47,7 @@ const PatternCard = props => {
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.patternCard}>
       <div className={styles.imageContainer}>
-        <ImgPattern image={props.patternImage} />
+        <ImgPattern images={props.patternImage} />
 
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
