@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Francois+One|Open+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Quicksand:600,700&display=swap');
 
-$font-core: "Open Sans", sans-serif;
+$font-core: "Quicksand", sans-serif;
 $font-title: "Francois One", sans-serif;
 
 $primary-color: antiquewhite;
@@ -20,6 +20,7 @@ body {
   font: 100% $font-core;
   background-color: $primary-color;
   font-size: 110%;
+  line-height: 1.9em;
 }
 
 h1,
