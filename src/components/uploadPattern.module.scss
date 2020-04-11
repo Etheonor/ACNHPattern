@@ -6,11 +6,15 @@
   background-color: whitesmoke;
 
   .uploadImage {
+    .imgBlock {
+      display: flex;
+      justify-content: center;
+    }
     .imageUploaded {
-      display: block;
-      margin: 20px auto 20px auto;
+      display: inline-block;
+      margin: 20px;
       width: 100%;
-      max-width: 700px;
+      max-width: 200px;
       height: auto;
     }
 
@@ -54,6 +58,7 @@
   .categories {
     h3 {
       text-align: center;
+      margin: 1.5em;
     }
 
     .checkboxes {
@@ -69,4 +74,21 @@
 .uploadImageButton {
   color: transparent;
   background: none;
+}
+
+.userCode {
+  display: inline-flex;
+  margin: 2em 0 2em 0;
+  h3 {
+    margin-right: 0.5em;
+  }
+  label {
+    margin-right : 0.5em;
+  }
+}
+
+.userCode {
+  h3 {
+    margin: 0 15px 0 15px;
+  }
 }

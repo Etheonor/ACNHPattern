@@ -33,7 +33,8 @@ const DisplayPatterns = props => {
 
   useEffect(() => {
     retrievePatterns();
-  }, []);
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  []);
 
   const retrievePatterns = (ref = patterns) => {
     const newState = [...currentCards];

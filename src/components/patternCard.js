@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import imgNoLike from "../images/like2.png";
 import imgLike from "../images/like1.png";
+import ImgPattern from "./structuralComponents/imgPattern";
 
 const PatternCard = props => {
   const db = firebase.firestore();
@@ -16,20 +17,24 @@ const PatternCard = props => {
     likeCount: props.likeCount,
   });
 
-  useEffect(() => {
-    setLike({
-      isLiked: user ? props.likes.includes(user.uid) : false,
-      likeCount: props.likeCount,
-    });
-  }, [props.likeCount]);
+  useEffect(
+    () => {
+      setLike({
+        isLiked: user ? props.likes.includes(user.uid) : false,
+        likeCount: props.likeCount,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props.likeCount]
+  );
 
   const addLike = () => {
     if (user !== null && props.likes.includes(user.uid) === false) {
       patternRef.update({
         likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
-        likeCount: increment
+        likeCount: increment,
       });
-      
+
       setLike({
         isLiked: true,
         likeCount: like.likeCount + 1,
@@ -42,7 +47,8 @@ const PatternCard = props => {
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.patternCard}>
       <div className={styles.imageContainer}>
-        <img src={props.patternImage} alt="" className={styles.patternImage} />
+        <ImgPattern images={props.patternImage} />
+
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
           <div className={`${styles.item} ${styles.likes}`}>

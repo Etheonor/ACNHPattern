@@ -13,7 +13,8 @@ const SearchDesigner = props => {
 
   useEffect(() => {
     retrieveQuery(props.creator);
-  }, []);
+  }, // eslint-disable-next-line react-hooks/exhaustive-deps
+  []);
 
   const retrieveQuery = userQuery => {
     const newState = [];
