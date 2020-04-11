@@ -18,7 +18,7 @@ const ImgPattern = (props) => {
     return (
         <div>
           <div onClick={visible}><img className={styles.imgCard} src={props.image} alt=''/></div>
-          <Rodal measure='%' width='90' height='100' className={styles.container} animation='fade' visible={show} onClose={hide}>
+          <Rodal measure='px' width='750' height='420' className={styles.container} animation='fade' visible={show} onClose={hide}>
             <img className={styles.imgZoom} src={props.image} alt=''/>
           </Rodal>
         </div>)
