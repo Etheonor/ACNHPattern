@@ -22,7 +22,7 @@ const UploadDesign = () => {
     const task = firebase
       .storage()
       .ref("images/")
-      .child('pattern' + Date.now() + Math.floor(Math.random() * 10000))
+      .child("pattern" + Date.now() + Math.floor(Math.random() * 10000))
       .put(file);
 
     task.on(
@@ -91,7 +91,7 @@ const UploadDesign = () => {
         designName: dName,
         user: state.user.username,
         likes: [],
-        likeCount: 0
+        likeCount: 0,
       };
       writePattern(patternObject);
     } else toast.error("Some info are missing!");
@@ -171,45 +171,51 @@ const UploadDesign = () => {
       </div>
       {/* CATEGORIES */}
       {/* DESIGN NAME */}
-      <h3>Design Name</h3>
       <div className={styles.userCode}>
-        <label htmlFor="designName">
-          <input
-            type="text"
-            value={dName}
-            onChange={handleDName}
-            id="creatorCode"
-            name="creatorCode"
-          />
-        </label>
+        <h3>Design Name</h3>
+        <div>
+          <label htmlFor="designName">
+            <input
+              type="text"
+              value={dName}
+              onChange={handleDName}
+              id="creatorCode"
+              name="creatorCode"
+            />
+          </label>
+        </div>
       </div>
       {/* DESIGN NAME */}
       {/* CREATOR CODE */}
-      <h3>Creator Code</h3>
       <div className={styles.userCode}>
-        <label htmlFor="creatorCode">
-          <input
-            type="text"
-            value={cCode}
-            onChange={handleCCode}
-            id="creatorCode"
-            name="creatorCode"
-          />
-        </label>
+        <h3>Creator Code</h3>
+        <div>
+          <label htmlFor="creatorCode">
+            <input
+              type="text"
+              value={cCode}
+              onChange={handleCCode}
+              id="creatorCode"
+              name="creatorCode"
+            />
+          </label>
+        </div>
       </div>
       {/* CREATOR CODE */}
       {/* DESIGN CODE */}
-      <h3>Design Code</h3>
       <div className={styles.userCode}>
-        <label htmlFor="designCode">
-          <input
-            type="text"
-            value={dCode}
-            onChange={handleDCode}
-            id="designCode"
-            name="designCode"
-          />
-        </label>
+        <h3>Design Code</h3>
+        <div>
+          <label htmlFor="designCode">
+            <input
+              type="text"
+              value={dCode}
+              onChange={handleDCode}
+              id="designCode"
+              name="designCode"
+            />
+          </label>
+        </div>
       </div>
       {/* DESIGN CODE */}
       <Button

@@ -54,6 +54,7 @@
   .categories {
     h3 {
       text-align: center;
+      margin: 1.5em;
     }
 
     .checkboxes {
@@ -69,4 +70,15 @@
 .uploadImageButton {
   color: transparent;
   background: none;
+}
+
+.userCode {
+  display: inline-flex;
+  margin: 2em 0 2em 0;
+  h3 {
+    margin-right: 0.5em;
+  }
+  label {
+    margin-right : 0.5em;
+  }
 }
