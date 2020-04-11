@@ -8,7 +8,7 @@ const About = () => (
   <Layout>
     <SEO title="About ACNH Pattern" />
     <div className={styles.Page}>
-      <h1>About #ACNH Pattern</h1>
+      <h1>About</h1>
       <h2>What is #ACNH Pattern ?</h2>
       <p>
         #ACNH Pattern is a website where you can share and find cool patterns
@@ -27,6 +27,7 @@ const About = () => (
         If you uploaded a design with your creator code, your personnal page is
         https://www.acnhpattern.com/[YOURCREATORCODE]
       </p>
+      <p>Please note that this is not instant, and creator pages are built every 12 to 24 hours.</p>
       <h2>How did you build it?</h2>
       <p>
         With great softwares! I'm new in web development and I wanted to improve
