@@ -6,6 +6,8 @@ import { GlobalStateContext } from "../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loadingIcon from "../icons/System/loader-4-line.svg";
+import uploadIcon from "../icons/System/upload-cloud-2-line.svg";
+import cameraIcon from "../icons/Media/camera-switch-line.svg";
 
 const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
@@ -75,8 +77,8 @@ const UploadDesign = () => {
   };
 
   const handleDesc = event => {
-    setDesc(event.target.value)
-  }
+    setDesc(event.target.value);
+  };
 
   const categoryHandler = () => {
     const checkedBoxes = document.querySelectorAll(
@@ -92,7 +94,12 @@ const UploadDesign = () => {
   };
 
   const uploadPattern = () => {
-    if (img !== null && cCode !== "" && dCode !== "" && cat.length > 0 & desc.length <=140) {
+    if (
+      img !== null &&
+      cCode !== "" &&
+      dCode !== "" &&
+      (cat.length > 0) & (desc.length <= 140)
+    ) {
       const patternObject = {
         patternImage: img,
         patternCat: cat,
@@ -124,12 +131,10 @@ const UploadDesign = () => {
         <form method="post" action="#" id="formInput">
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
-              <p>
-                <span role="img" aria-label="camera">
-                  📷
-                </span>{" "}
-                Image Upload
-              </p>
+              <div className={styles.uploadButtons}>
+                <Button image={cameraIcon} label="Image Upload" />
+              </div>
+
               {loadingImage && (
                 <img
                   className={styles.loadingIcon}
@@ -169,55 +174,64 @@ const UploadDesign = () => {
       <div className={styles.categories}>
         <h3>Pattern Categories</h3>
         <div className={styles.checkboxes}>
-          <label htmlFor="category1">
+          <label className={styles.checkContainer} htmlFor="category1">
             <input
               type="checkbox"
               id="category1"
               name="category"
               value="Cloth"
               onChange={categoryHandler}
-            />{" "}
-            Cloth
+            />
+            <span className={styles.checkmark}></span> Cloth
           </label>
 
-          <label htmlFor="category2">
+          <label className={styles.checkContainer} htmlFor="category2">
             <input
               type="checkbox"
               id="category2"
               name="category"
               value="Wall"
               onChange={categoryHandler}
-            />{" "}
-            Wall
+            />
+            <span className={styles.checkmark}></span> Wall
           </label>
 
-          <label htmlFor="category3">
+          <label className={styles.checkContainer} htmlFor="category3">
             <input
               type="checkbox"
               id="category3"
               name="category"
               value="Floor"
               onChange={categoryHandler}
-            />{" "}
-            Floor
+            />
+            <span className={styles.checkmark}></span> Floor
           </label>
-          <label htmlFor="category4">
+          <label className={styles.checkContainer} htmlFor="category4">
             <input
               type="checkbox"
               id="category4"
               name="category"
               value="Sign"
               onChange={categoryHandler}
-            />{" "}
-            Sign
+            />
+            <span className={styles.checkmark}></span> Sign
           </label>
         </div>
       </div>
       {/* CATEGORIES */}
       {/* DESCRIPTION */}
-      <div className={styles.description}><label htmlFor="description"><h3>Description (optional)</h3></label>
-      <textarea maxlength='140' onChange={handleDesc} id="description" rows="4"></textarea></div>
-      
+      <div className={styles.description}>
+        <label htmlFor="description">
+          <h3>Description (optional)</h3>
+        </label>
+        <textarea
+          maxlength="140"
+          onChange={handleDesc}
+          id="description"
+          rows="4"
+        ></textarea>
+      </div>
+
       {/* DESCRIPTION */}
       {/* DESIGN NAME */}
       <div className={styles.userCode}>
@@ -263,7 +277,7 @@ const UploadDesign = () => {
       </div>
       {/* DESIGN CODE */}
       <Button
-        specialStyle="upload"
+        image={uploadIcon}
         onClick={uploadPattern}
         label="Upload your pattern"
       />

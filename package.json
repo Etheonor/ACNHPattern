@@ -30,6 +30,7 @@
     "react-helmet": "^5.2.1",
     "react-icons": "^3.9.0",
     "react-infinite-scroll-component": "^5.0.4",
+    "react-masonry-css": "^1.0.14",
     "react-responsive-carousel": "^3.1.57",
     "react-toastify": "^5.5.0",
     "react-twitter-login": "^1.1.2",

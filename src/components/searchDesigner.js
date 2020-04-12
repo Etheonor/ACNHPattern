@@ -11,10 +11,12 @@ const db = firebase.firestore();
 const SearchDesigner = props => {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    retrieveQuery(props.creator);
-  }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  []);
+  useEffect(
+    () => {
+      retrieveQuery(props.creator);
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const retrieveQuery = userQuery => {
     const newState = [];
@@ -55,16 +57,18 @@ const SearchDesigner = props => {
             <label htmlFor="site-search">
               Find a designer with his/her designer tag
             </label>
-            <input
-              className={styles.inputSearch}
-              type="search"
-              id="site-search"
-              name="q"
-              aria-label="Search through site content"
-            />
-            <Button label="Search" onClick={search}>
-              Search
-            </Button>
+            <div className={styles.buttonSearchGroup}>
+              <input
+                className={styles.inputSearch}
+                type="search"
+                id="site-search"
+                name="q"
+                aria-label="Search through site content"
+              />
+              <Button label="Search" onClick={search}>
+                Search
+              </Button>
+            </div>
           </div>
         </div>
       )}

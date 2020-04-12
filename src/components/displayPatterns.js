@@ -3,6 +3,7 @@ import styles from "./displayPatterns.module.scss";
 import PatternCard from "./patternCard";
 import { firebase } from "../API/Firebase";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Masonry from 'react-masonry-css'
 
 const db = firebase.firestore();
 const ref = db.collection("UserPatterns");
