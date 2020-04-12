@@ -62,12 +62,13 @@ const DisplayPatterns = props => {
 
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
-    <div className={styles.container}>
+    <div >
       <InfiniteScroll
+      className={styles.infinite}
         dataLength={currentCards.length}
         next={fetchMoreData}
         hasMore={true}
-      >
+      ><div className={styles.container}>
         {currentCards.map((value, index) => {
           return (
             <PatternCard
@@ -84,7 +85,7 @@ const DisplayPatterns = props => {
               updatePatterns={retrievePatterns}
             />
           );
-        })}
+        })}</div>
       </InfiniteScroll>
     </div>
   );
