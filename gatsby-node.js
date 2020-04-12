@@ -1,5 +1,4 @@
 const path = require("path");
-const data = require("./src/creatorPages.json");
 const firebase = require("firebase");
 const template = path.resolve("./src/components/creatorPages.js");
 
@@ -45,26 +44,16 @@ exports.createPages = async ({ actions }) => {
       let newState = null;
       // doc.data() is never undefined for query doc snapshots
       newState = querySnapshot.data().creatorCodes;
-      console.log(newState);
-      var fs = require("fs");
-      fs.writeFile(
-        "./src/creatorPages.json",
-        JSON.stringify(querySnapshot.data().creatorCodes),
-        function(err) {
-          if (err) throw err;
-          console.log("Saved!");
-        }
-      );
+      return newState;
     })
-    .then(() => {
+    .then(data => {
       const { createPage } = actions;
-      data.forEach(object => {
-        const path = object.user;
-        console.log(path)
+      data.map(el => {
+        const path = el.user;
         createPage({
           path,
           component: template,
-          context: object,
+          context: el,
         });
       });
     });
