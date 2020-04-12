@@ -20,3 +20,13 @@
     }
   }
 }
+
+.masonGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+.masonColumn {
+  background-clip: padding-box;
+}

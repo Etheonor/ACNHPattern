@@ -3,7 +3,7 @@ import styles from "./displayPatterns.module.scss";
 import PatternCard from "./patternCard";
 import { firebase } from "../API/Firebase";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Masonry from 'react-masonry-css'
+import Masonry from "react-masonry-css";
 
 const db = firebase.firestore();
 const ref = db.collection("UserPatterns");
@@ -59,33 +59,47 @@ const DisplayPatterns = props => {
         });
       });
   };
+  const breakpointColumnsObj = {
+    default: 3,
+    1920: 3,
+    1440: 2,
+    1000: 1
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
-    <div >
+    <div>
       <InfiniteScroll
-      className={styles.infinite}
+        className={styles.infinite}
         dataLength={currentCards.length}
         next={fetchMoreData}
         hasMore={true}
-      ><div className={styles.container}>
-        {currentCards.map((value, index) => {
-          return (
-            <PatternCard
-              key={index}
-              user={value.user}
-              creatorCode={value.creatorCode}
-              designCode={value.designCode}
-              patternImage={value.patternImage}
-              designName={value.designName}
-              likes={value.likes}
-              desc={value.description}
-              likeCount={value.likeCount}
-              object={value.id}
-              updatePatterns={retrievePatterns}
-            />
-          );
-        })}</div>
+      >
+        <div className={styles.container}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className={styles.masonGrid}
+            columnClassName={styles.masonColumn}
+          >
+            {currentCards.map((value, index) => {
+              return (
+                <PatternCard
+                  key={index}
+                  user={value.user}
+                  creatorCode={value.creatorCode}
+                  designCode={value.designCode}
+                  patternImage={value.patternImage}
+                  designName={value.designName}
+                  likes={value.likes}
+                  desc={value.description}
+                  likeCount={value.likeCount}
+                  object={value.id}
+                  updatePatterns={retrievePatterns}
+                />
+              );
+            })}
+          </Masonry>
+        </div>
       </InfiniteScroll>
     </div>
   );
