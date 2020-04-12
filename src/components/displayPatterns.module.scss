@@ -1,14 +1,3 @@
-.displayPatterns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-}
-
-.container {
-  text-align: center;
-}
-
 .loadingIcon {
   width: 30px;
   animation: spin 1s infinite linear;
@@ -23,3 +12,14 @@
   }
 }
 
+.masonGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin: auto;
+  width: auto;
+}
+.masonColumn {
+  background-clip: padding-box;
+   /* gutter size */
+}
