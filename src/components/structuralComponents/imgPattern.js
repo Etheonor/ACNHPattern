@@ -11,7 +11,7 @@ const ImgPattern = props => {
         {props.images.map((el, index) => {
           return (
             <div>
-              <img src={el} />
+              <img src={el} alt=''/>
             </div>
           );
         })}

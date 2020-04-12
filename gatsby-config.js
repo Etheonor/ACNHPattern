@@ -5,6 +5,7 @@ module.exports = {
     author: `@mbreyton`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-mdx`,
