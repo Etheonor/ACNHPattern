@@ -13,6 +13,7 @@ const Contact = () => (
         Want to contact me about the website? You have an idea that will greatly
         improve #ACNH Pattern? Please feel free to contact me with this form!
       </p>
+      <p>You can also send me a DM on <a href='https://twitter.com/RoadtoIndie'>Twitter</a></p>
       <form
         name="contact"
         method="POST"

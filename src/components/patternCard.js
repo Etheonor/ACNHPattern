@@ -51,6 +51,7 @@ const PatternCard = props => {
 
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
+          {props.desc && <div className={styles.desc}><p>{props.desc}</p></div>}
           <div className={`${styles.item} ${styles.likes}`}>
             {user ? (
               like.isLiked ? (

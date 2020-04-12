@@ -1,14 +1,23 @@
 import React from "react";
-import Layout from "./components/layout";
+import Layout from "./layout";
 import { graphql } from "gatsby";
-import SearchDesigner from './components/searchDesigner'
+import SearchDesigner from "./searchDesigner";
+import styles from "./creatorPages.module.scss";
 
 export default ({ data }) => {
   const elements = data.allSitePage.edges[0].node.context;
+
   return (
     <Layout>
       <h2>{elements.user}</h2>
-      <SearchDesigner creator={elements.user}/>
+      {elements.kofi && (
+        <div className={styles.kofi}>
+          <a href={`https://ko-fi.com/${elements.kofi}`}>
+            You want to support this creator on Ko-fi? Click here!
+          </a>
+        </div>
+      )}
+      <SearchDesigner creator={elements.user} />
     </Layout>
   );
 };
@@ -20,6 +29,7 @@ export const query = graphql`
         node {
           context {
             user
+            kofi
           }
         }
       }

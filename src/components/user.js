@@ -56,15 +56,15 @@ const User = () => {
     <div className={styles.userPanel}>
       {state.user ? (
         <div>
-          <Button image={logout} onClick={signOut} label="Log Out" />
+          <Button image={logout} onClick={signOut} label="Logout" />
           <Link to="/upload-pattern">
             <Button image={addimg} label="Upload" />
           </Link>
         </div>
       ) : (
-        <Button image={login} onClick={signIn} label="Log In" />
+        <Button image={login} onClick={signIn} label="Login" />
       )}<Link to="/search">
-      <Button image={searchimg} label="Search Designer" />
+      <Button image={searchimg} label="Search by designer" />
     </Link>
     </div>
   );

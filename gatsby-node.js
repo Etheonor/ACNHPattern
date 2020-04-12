@@ -1,7 +1,7 @@
 const path = require("path");
 const data = require("./src/creatorPages.json");
 const firebase = require("firebase");
-const template = path.resolve("./src/creatorPages.js");
+const template = path.resolve("./src/components/creatorPages.js");
 
 const config = {
   apiKey: `${process.env.GATSBY_FIREBASE_APIKEY}`,

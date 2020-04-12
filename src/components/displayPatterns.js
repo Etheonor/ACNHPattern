@@ -31,10 +31,12 @@ const DisplayPatterns = props => {
     );
   };
 
-  useEffect(() => {
-    retrievePatterns();
-  }, // eslint-disable-next-line react-hooks/exhaustive-deps
-  []);
+  useEffect(
+    () => {
+      retrievePatterns();
+    }, // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const retrievePatterns = (ref = patterns) => {
     const newState = [...currentCards];
@@ -46,7 +48,6 @@ const DisplayPatterns = props => {
           newState.push(doc.data());
           newState[newState.length - 1].id = doc.id;
         });
-        console.log("DB USED");
         setCurrentCards(newState);
         return querySnapshot;
       })
@@ -76,6 +77,7 @@ const DisplayPatterns = props => {
               patternImage={value.patternImage}
               designName={value.designName}
               likes={value.likes}
+              desc={value.description}
               likeCount={value.likeCount}
               object={value.id}
               updatePatterns={retrievePatterns}

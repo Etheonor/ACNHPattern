@@ -16,6 +16,7 @@ const UploadDesign = () => {
   const [cat, setCat] = useState([]);
   const [dName, setdName] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
+  const [desc, setDesc] = useState("");
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -50,22 +51,15 @@ const UploadDesign = () => {
     const input = document.getElementById("fileinput");
 
     if (input.files !== undefined) {
-      /*input.files.map(file => {
-        if (file.size < 500000) {
-          console.log('uploading')
-          uploadImg(input.file)
-        }
-      })*/
       for (let i = 0; i < input.files.length; i++) {
         uploadImg(input.files[i]);
-        console.log(input.files[i]);
       }
 
       //uploadImg(input.files);
     } else if (input.files.size > 500000) {
       toast.warning("Your image is way too big!");
     } else toast.warning("Select an image!");
-    console.log(input.files);
+
     return input.files;
   };
 
@@ -79,6 +73,10 @@ const UploadDesign = () => {
   const handleDName = event => {
     setdName(event.target.value);
   };
+
+  const handleDesc = event => {
+    setDesc(event.target.value)
+  }
 
   const categoryHandler = () => {
     const checkedBoxes = document.querySelectorAll(
@@ -94,11 +92,12 @@ const UploadDesign = () => {
   };
 
   const uploadPattern = () => {
-    if (img !== null && cCode !== "" && dCode !== "" && cat.length > 0) {
+    if (img !== null && cCode !== "" && dCode !== "" && cat.length > 0 & desc.length <=140) {
       const patternObject = {
         patternImage: img,
         patternCat: cat,
         creatorCode: cCode,
+        description: desc,
         designCode: dCode,
         designName: dName,
         user: state.user.username,
@@ -107,15 +106,15 @@ const UploadDesign = () => {
       };
       writePattern(patternObject);
       document.getElementById("formInput").reset();
-      document.getElementById('category1').checked = false;
-      document.getElementById('category2').checked = false;
-      document.getElementById('category3').checked = false;
+      document.getElementById("category1").checked = false;
+      document.getElementById("category2").checked = false;
+      document.getElementById("category3").checked = false;
       document.getElementById("designCode").value = null;
       document.getElementById("creatorCode").value = null;
       document.getElementById("designName").value = null;
-      setImg([])
-
-    } else toast.error("Some info are missing!");
+      document.getElementById("description").value = null;
+      setImg([]);
+    } else toast.error("Did you enter all the info?");
   };
 
   return (
@@ -129,7 +128,7 @@ const UploadDesign = () => {
                 <span role="img" aria-label="camera">
                   📷
                 </span>{" "}
-                Image Upload (5 images and 500ko max)
+                Image Upload
               </p>
               {loadingImage && (
                 <img
@@ -148,6 +147,7 @@ const UploadDesign = () => {
                 onChange={onChangeHandler}
               />
             </label>
+            <p className={styles.uploadInfo}>5 images and 500ko/image max</p>
           </div>
         </form>
         <div className={styles.imgBlock}>
@@ -201,9 +201,24 @@ const UploadDesign = () => {
             />{" "}
             Floor
           </label>
+          <label htmlFor="category4">
+            <input
+              type="checkbox"
+              id="category4"
+              name="category"
+              value="Sign"
+              onChange={categoryHandler}
+            />{" "}
+            Sign
+          </label>
         </div>
       </div>
       {/* CATEGORIES */}
+      {/* DESCRIPTION */}
+      <div className={styles.description}><label htmlFor="description"><h3>Description (optional)</h3></label>
+      <textarea maxlength='140' onChange={handleDesc} id="description" rows="4"></textarea></div>
+      
+      {/* DESCRIPTION */}
       {/* DESIGN NAME */}
       <div className={styles.userCode}>
         <h3>Design Name</h3>

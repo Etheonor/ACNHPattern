@@ -68,6 +68,12 @@
 }
 
 .patternTitle {
-  margin: 1em auto 0 auto;
+  margin: 0 auto 0 auto;
   text-align: center;
+}
+
+.desc {
+  display:block;
+  max-width: 100%;
+  word-wrap: break-word;
 }

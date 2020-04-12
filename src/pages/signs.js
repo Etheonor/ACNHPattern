@@ -5,12 +5,12 @@ import SEO from "../components/seo";
 import DisplayPatterns from "../components/displayPatterns";
 import styles from "./pages.module.scss";
 
-const Cloth = () => (
+const Signs = () => (
   <Layout>
-    <SEO title="Clothing patterns" />
-    <h2 className={styles.pageTitle}>Clothing</h2>
-    <DisplayPatterns category="Cloth" />
+    <SEO title="Signs patterns" />
+    <h2 className={styles.pageTitle}>Signs</h2>
+    <DisplayPatterns category="Signs" />
   </Layout>
 );
 
-export default Cloth;
+export default Signs;

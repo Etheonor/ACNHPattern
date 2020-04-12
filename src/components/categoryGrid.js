@@ -8,13 +8,16 @@ const CategoryGrid = props => {
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.categoryGrid}>
       <Link to="/cloth">
-        <CategoryButton title="Cloth" />
+        <CategoryButton title="Clothing" />
       </Link>
       <Link to="/walls">
         <CategoryButton title="Walls" />
       </Link>
       <Link to="/floors">
         <CategoryButton title="Floors" />
+      </Link>
+      <Link to="/signs">
+        <CategoryButton title="Signs" />
       </Link>
     </div>
   );
