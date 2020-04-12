@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./donate.module.scss";
-import donate from "./../../images/donate.png";
 
 const Donate = () => {
   return (
-    <a  href="https://ko-fi.com/Y8Y41LNMX" target="_blank">
+    <a  href="https://ko-fi.com/Y8Y41LNMX" target="_blank" rel="noopener noreferrer">
       <img
       className={styles.donateButton}
         height="42"
