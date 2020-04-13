@@ -1,10 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `ACNH Pattern`,
-    description: `Find cool pattern for Animal Crossing`,
+    description: `Find cool patterns for Animal Crossing`,
     author: `@mbreyton`,
+    siteUrl: `https://www.acnhpattern.com`,
   },
   plugins: [
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sharp`,
     {
