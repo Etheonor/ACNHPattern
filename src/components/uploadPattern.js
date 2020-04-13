@@ -182,7 +182,7 @@ const UploadDesign = () => {
               value="Cloth"
               onChange={categoryHandler}
             />
-            <span className={styles.checkmark}></span> Cloth
+            <span className={styles.checkmark}></span> Clothing
           </label>
 
           <label className={styles.checkContainer} htmlFor="category2">
@@ -222,7 +222,7 @@ const UploadDesign = () => {
       {/* DESCRIPTION */}
       <div className={styles.description}>
         <label htmlFor="description">
-          <h3>Description (optional)</h3>
+          <h3>Description (optional, 140char / max)</h3>
         </label>
         <textarea
           maxlength="140"

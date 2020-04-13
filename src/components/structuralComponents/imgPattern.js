@@ -14,7 +14,7 @@ const ImgPattern = props => {
   window.addEventListener('resize', resizeTest);
   return (
     <div>
-      <Carousel showThumbs={winSize}>
+      <Carousel showThumbs={winSize} showStatus={false}>
         
         {props.images.map((el, index) => {
           return (

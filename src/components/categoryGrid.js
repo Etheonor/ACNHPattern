@@ -7,7 +7,7 @@ const CategoryGrid = props => {
   return (
     // eslint-disable-next-line jsx-a11y/interactive-supports-focus, jsx-a11y/click-events-have-key-events
     <div className={styles.categoryGrid}>
-      <Link to="/cloth">
+      <Link to="/clothing">
         <CategoryButton title="Clothing" />
       </Link>
       <Link to="/walls">
