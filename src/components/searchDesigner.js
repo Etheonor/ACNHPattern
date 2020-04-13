@@ -73,7 +73,7 @@ const SearchDesigner = props => {
         </div>
       )}
 
-      <div className={styles.container}>
+
         {cards && (
           <div className={styles.displayPatterns}>
             {cards.map((value, index) => {
@@ -93,7 +93,7 @@ const SearchDesigner = props => {
             })}
           </div>
         )}
-      </div>
+
     </div>
   );
 };

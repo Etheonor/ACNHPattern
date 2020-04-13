@@ -13,8 +13,8 @@ const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
 
   const [img, setImg] = useState([]);
-  const [cCode, setcCode] = useState("");
-  const [dCode, setdCode] = useState("");
+  const [cCode, setcCode] = useState("MA-");
+  const [dCode, setdCode] = useState("MO-");
   const [cat, setCat] = useState([]);
   const [dName, setdName] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
@@ -118,7 +118,7 @@ const UploadDesign = () => {
       document.getElementById("category3").checked = false;
       document.getElementById("designCode").value = null;
       document.getElementById("creatorCode").value = null;
-      document.getElementById("designName").value = null;
+      document.getElementById("designName").value = 'MO-';
       document.getElementById("description").value = null;
       setImg([]);
     } else toast.error("Did you enter all the info?");
@@ -132,7 +132,7 @@ const UploadDesign = () => {
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
               <div className={styles.uploadButtons}>
-                <p className={styles.uploadButton}>Upload a New Pattern!</p>
+                <p className={styles.uploadButton}>Select your image(s)</p>
               </div>
 
               {loadingImage && (
