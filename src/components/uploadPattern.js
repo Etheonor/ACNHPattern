@@ -132,7 +132,7 @@ const UploadDesign = () => {
           <div className="form-group files">
             <label htmlFor="fileinput" className={styles.uploadImageLabel}>
               <div className={styles.uploadButtons}>
-                <Button image={cameraIcon} label="Image Upload" />
+                <p className={styles.uploadButton}>Upload a New Pattern!</p>
               </div>
 
               {loadingImage && (
