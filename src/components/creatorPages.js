@@ -13,7 +13,7 @@ export default ({ data }) => {
       {elements.kofi && (
         <div className={styles.kofi}>
           <a href={`https://ko-fi.com/${elements.kofi}`}>
-            You want to support this creator on Ko-fi? Click here!
+            Want to support this creator on Ko-fi? Click here!
           </a>
         </div>
       )}
