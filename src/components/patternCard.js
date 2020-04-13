@@ -71,15 +71,11 @@ const PatternCard = props => {
         </div>
         <div className={styles.textContainer}>
           <div className={styles.item}>
-            <h3>Creator Code:</h3> <p>{props.creatorCode}</p>
+            <h3>Creator</h3> <p>{props.creatorCode}</p>
           </div>
           <div className={styles.item}>
-            <h3>Design Code:</h3>
+            <h3>Design</h3>
             <p>{props.designCode}</p>
-          </div>
-          <div className={styles.item}>
-            <h3>Uploader:</h3>
-            <p>{props.user}</p>
           </div>
         </div>
       </div>
