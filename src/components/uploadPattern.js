@@ -1,13 +1,22 @@
 import React, { useState, useContext } from "react";
 import { firebase, writePattern } from "../API/Firebase";
 import styles from "./uploadPattern.module.scss";
-import Button from "./buttons/button";
+import Button2 from "./buttons/button";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loadingIcon from "../icons/System/loader-4-line.svg";
 import uploadIcon from "../icons/System/upload-cloud-2-line.svg";
-import cameraIcon from "../icons/Media/camera-switch-line.svg";
+
+//IMPORT MATERIAL UI
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import TextField from "@material-ui/core/TextField";
 
 const UploadDesign = () => {
   const state = useContext(GlobalStateContext);
@@ -19,6 +28,17 @@ const UploadDesign = () => {
   const [dName, setdName] = useState("");
   const [loadingImage, setLoadingImage] = useState(false);
   const [desc, setDesc] = useState("");
+
+  const useStyles = makeStyles(theme => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
+  }));
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -67,6 +87,7 @@ const UploadDesign = () => {
 
   const handleCCode = event => {
     setcCode(event.target.value);
+    console.log(cCode);
   };
 
   const handleDCode = event => {
@@ -82,14 +103,15 @@ const UploadDesign = () => {
 
   const categoryHandler = () => {
     const checkedBoxes = document.querySelectorAll(
-      "input[name=category]:checked"
+      "input[id=catCheck]:checked"
     );
     const newCat = [];
     checkedBoxes.forEach(element => {
       if (element.checked === true) {
-        newCat.push(element.defaultValue);
+        newCat.push(element.labels[0].innerText);
       }
     });
+    console.log(newCat);
     setCat(newCat);
   };
 
@@ -113,175 +135,204 @@ const UploadDesign = () => {
       };
       writePattern(patternObject);
       document.getElementById("formInput").reset();
-      document.getElementById("category1").checked = false;
-      document.getElementById("category2").checked = false;
-      document.getElementById("category3").checked = false;
-      document.getElementById("designCode").value = null;
-      document.getElementById("creatorCode").value = null;
-      document.getElementById("designName").value = 'MO-';
-      document.getElementById("description").value = null;
+
       setImg([]);
     } else toast.error("Did you enter all the info?");
   };
+  const classes = useStyles();
 
   return (
-    <div className={styles.uploadDesign}>
-      {/* UPLOAD IMAGE */}
-      <div className={styles.uploadImage}>
-        <form method="post" action="#" id="formInput">
-          <div className="form-group files">
-            <label htmlFor="fileinput" className={styles.uploadImageLabel}>
-              <div className={styles.uploadButtons}>
-                <p className={styles.uploadButton}>Select your image(s)</p>
+    <Grid className={styles.uploadDesign}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            {" "}
+            {/* UPLOAD IMAGE */}
+            <div className={styles.uploadImage}>
+              <form method="post" action="#" id="formInput">
+                <div className={styles.uploadImageButton}>
+                  <label
+                    htmlFor="fileinput"
+                    className={styles.uploadImageLabel}
+                  >
+                    <input
+                      type="file"
+                      multiple
+                      name="file"
+                      id="fileinput"
+                      className={styles.uploadImageButton}
+                      onChange={onChangeHandler}
+                    />
+                    <Button
+                      component="span"
+                      variant="contained"
+                      color="primary"
+                    >
+                      Select your image(s)
+                    </Button>
+                    {loadingImage && (
+                      <img
+                        className={styles.loadingIcon}
+                        src={loadingIcon}
+                        alt="loading"
+                      />
+                    )}
+                  </label>
+                  <p className={styles.uploadInfo}>
+                    5 images and 500ko/image max
+                  </p>
+                </div>
+              </form>
+              <div className={styles.imgBlock}>
+                {img &&
+                  img.map((el, index) => {
+                    return (
+                      <img
+                        key={index}
+                        className={styles.imageUploaded}
+                        src={el}
+                        alt=""
+                      />
+                    );
+                  })}
               </div>
-
-              {loadingImage && (
-                <img
-                  className={styles.loadingIcon}
-                  src={loadingIcon}
-                  alt="loading"
-                />
-              )}
-
-              <input
-                type="file"
-                multiple
-                name="file"
-                id="fileinput"
-                className={styles.uploadImageButton}
-                onChange={onChangeHandler}
+            </div>
+            {/* UPLOAD IMAGE */}
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            {/* CATEGORIES */}
+            <div className={styles.categories}>
+              <h3>Pattern Categories</h3>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={categoryHandler}
+                    id="catCheck"
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                }
+                label="Cloth"
               />
-            </label>
-            <p className={styles.uploadInfo}>5 images and 500ko/image max</p>
-          </div>
-        </form>
-        <div className={styles.imgBlock}>
-          {img &&
-            img.map((el, index) => {
-              return (
-                <img
-                  key={index}
-                  className={styles.imageUploaded}
-                  src={el}
-                  alt=""
-                />
-              );
-            })}
-        </div>
-      </div>
-      {/* UPLOAD IMAGE */}
-      {/* CATEGORIES */}
-      <div className={styles.categories}>
-        <h3>Pattern Categories</h3>
-        <div className={styles.checkboxes}>
-          <label className={styles.checkContainer} htmlFor="category1">
-            <input
-              type="checkbox"
-              id="category1"
-              name="category"
-              value="Cloth"
-              onChange={categoryHandler}
-            />
-            <span className={styles.checkmark}></span> Clothing
-          </label>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={categoryHandler}
+                    id="catCheck"
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                }
+                label="Wall"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={categoryHandler}
+                    id="catCheck"
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                }
+                label="Floor"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={categoryHandler}
+                    id="catCheck"
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                }
+                label="Path"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    onChange={categoryHandler}
+                    id="catCheck"
+                    color="primary"
+                    inputProps={{ "aria-label": "secondary checkbox" }}
+                  />
+                }
+                label="Sign"
+              />
+            </div>
 
-          <label className={styles.checkContainer} htmlFor="category2">
-            <input
-              type="checkbox"
-              id="category2"
-              name="category"
-              value="Wall"
-              onChange={categoryHandler}
+            {/* CATEGORIES */}
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            {" "}
+            {/* DESCRIPTION */}
+            <div className={styles.description}>
+              <label htmlFor="description">
+                <h3>Description (optional, 140char / max)</h3>
+              </label>
+              <textarea
+                maxLength="140"
+                onChange={handleDesc}
+                id="description"
+                rows="4"
+              ></textarea>
+            </div>
+            {/* DESCRIPTION */}
+          </Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            {/* DESIGN NAME */}
+            <TextField
+              id="standard-basic"
+              label="Design Name"
+              value={dName}
+              onChange={handleDName}
             />
-            <span className={styles.checkmark}></span> Wall
-          </label>
-
-          <label className={styles.checkContainer} htmlFor="category3">
-            <input
-              type="checkbox"
-              id="category3"
-              name="category"
-              value="Floor"
-              onChange={categoryHandler}
+            {/* DESIGN NAME */}
+          </Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            {/* CREATOR CODE */}
+            <TextField
+              id="standard-basic"
+              label="Creator Code"
+              value={cCode}
+              onChange={handleCCode}
             />
-            <span className={styles.checkmark}></span> Floor
-          </label>
-          <label className={styles.checkContainer} htmlFor="category4">
-            <input
-              type="checkbox"
-              id="category4"
-              name="category"
-              value="Sign"
-              onChange={categoryHandler}
+            {/* CREATOR CODE */}
+          </Paper>
+        </Grid>
+        <Grid item xs={4}>
+          <Paper className={classes.paper}>
+            {" "}
+            {/* DESIGN CODE */}
+            <TextField
+              id="standard-basic"
+              label="Design Name"
+              value={dCode}
+              onChange={handleDCode}
             />
-            <span className={styles.checkmark}></span> Sign
-          </label>
-        </div>
-      </div>
-      {/* CATEGORIES */}
-      {/* DESCRIPTION */}
-      <div className={styles.description}>
-        <label htmlFor="description">
-          <h3>Description (optional, 140char / max)</h3>
-        </label>
-        <textarea
-          maxlength="140"
-          onChange={handleDesc}
-          id="description"
-          rows="4"
-        ></textarea>
-      </div>
-
-      {/* DESCRIPTION */}
-      {/* DESIGN NAME */}
-      <div className={styles.userCode}>
-        <h3>Design Name</h3>
-
-        <label htmlFor="designName">
-          <input
-            type="text"
-            value={dName}
-            onChange={handleDName}
-            id="designName"
-            name="designName"
-          />
-        </label>
-      </div>
-      {/* DESIGN NAME */}
-      {/* CREATOR CODE */}
-      <div className={styles.userCode}>
-        <h3>Creator Code</h3>
-        <label htmlFor="creatorCode">
-          <input
-            type="text"
-            value={cCode}
-            onChange={handleCCode}
-            id="creatorCode"
-            name="creatorCode"
-          />
-        </label>
-      </div>
-      {/* CREATOR CODE */}
-      {/* DESIGN CODE */}
-      <div className={styles.userCode}>
-        <h3>Design Code</h3>
-        <label htmlFor="designCode">
-          <input
-            type="text"
-            value={dCode}
-            onChange={handleDCode}
-            id="designCode"
-            name="designCode"
-          />
-        </label>
-      </div>
-      {/* DESIGN CODE */}
-      <Button
-        image={uploadIcon}
-        onClick={uploadPattern}
-        label="Upload your pattern"
-      />
-    </div>
+            {/* DESIGN CODE */}
+          </Paper>
+        </Grid>
+        <Grid item xs={12} className={styles.uploadButton}>
+          {" "}
+          <Button
+            image={uploadIcon}
+            onClick={uploadPattern}
+            variant="contained"
+            color="primary"
+          >
+            Upload your pattern
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

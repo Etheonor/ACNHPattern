@@ -5,6 +5,9 @@
   margin: auto;
   background-color: whitesmoke;
 
+  .uploadButton {
+    text-align: center;
+  }
   .uploadImage {
     .imgBlock {
       display: flex;
@@ -20,16 +23,15 @@
 
     .uploadButtons {
       max-width: 300px;
-      margin:auto;
+      margin: auto;
     }
 
     .uploadImageLabel {
-      
       input[type="file"] {
         display: none;
       }
       h3 {
-        color: white;
+        color: black;
       }
     }
     .uploadImageLabel:hover {
@@ -49,119 +51,32 @@
       }
     }
   }
-
-  .categories {
-    h3 {
-      text-align: center;
-      margin: 0.5em 0 1.5em 0;
-    }
-
-    .checkboxes {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin: auto;
-      max-width: 33em;
-    }
-  }
   .description {
     margin: 0 1em 0 1em;
     textarea {
-      float: left;
-            width: 100%;
-            min-height: 75px;
-            outline: none;
-            resize: none;
-            border: 1px solid grey;
-            font-size: 120%;
-            font-family: 'Quicksand';
+      width: 100%;
+      min-height: 75px;
+      outline: none;
+      resize: none;
+      border: 1px solid grey;
+      font-size: 120%;
+      font-family: "Quicksand";
     }
-  }
-  .checkContainer {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    input {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-    }
-    .checkmark {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 25px;
-      width: 25px;
-      background-color: rgb(218, 218, 218);
-    }
-    .checkmark:after {
-      content: "";
-      position: absolute;
-      display: none;
-    }
-    input:checked ~ .checkmark {
-      background-color: #7298ad;
-    }
-    input:checked ~ .checkmark:after {
-      display: block;
-    }
-    .checkmark:after {
-      left: 9px;
-      top: 5px;
-      width: 5px;
-      height: 10px;
-      border: solid white;
-      border-width: 0 3px 3px 0;
-      -webkit-transform: rotate(45deg);
-      -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-    }
-  }
-  .checkContainer:hover input ~ .checkmark {
-    background-color: #ccc;
   }
 }
 
-.uploadImageButton {
-  color: transparent;
-  background: none;
-}
-
-.userCode {
-  display: inline-flex;
-  margin: 2em 0 2em 0;
-  h3 {
-    margin-right: 0.3em;
-  }
-  label {
-    margin-right : 0.3em;
-  }
-}
-
-.userCode {
-  h3 {
-    margin: 0 9px 0 9px;
-  }
-}
 .uploadInfo {
   text-align: center;
+  color: black;
 }
 
-.uploadButton {
-  background-color: #8496B3;
-  border-radius: 5px;
-  text-align: center;
-  color:white;
-}
-.uploadButton:hover {
-  background: rgb(56, 161, 243);
+.userCode {
+  input {
+    width: 100%;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    font-size: 100%;
+    font-family: "Quicksand";
+  }
 }

@@ -11,14 +11,31 @@ import {
   GlobalStateContext,
 } from "../context/GlobalContextProvider";
 
-import Button from "./buttons/button";
-import login from "./../icons/Logos/google-fill.svg";
-import logout from "./../icons/System/logout-box-line.svg";
-import addimg from "./../icons/System/add-circle-line.svg";
-import searchimg from './../icons/System/search-line.svg'
 import styles from "./user.module.scss";
 
+//IMPORT MATERIAL UI
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import SearchIcon from "@material-ui/icons/Search";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 const User = () => {
+  const classes = useStyles();
+
   // CHANGE TO FUNCTIONNAL COMPONENT
   const dispatch = useContext(GlobalDispatchContext);
   const state = useContext(GlobalStateContext);
@@ -55,17 +72,46 @@ const User = () => {
   return (
     <div className={styles.userPanel}>
       {state.user ? (
-        <div>
-          <Button image={logout} onClick={signOut} label="Logout" />
-          <Link to="/upload-pattern">
-            <Button image={addimg} label="Upload" />
-          </Link>
-        </div>
+        <ButtonGroup
+          variant="contained"
+          color="primary"
+          aria-label="contained primary button group"
+        >
+          <Button
+            className={classes.button}
+            onClick={signOut}
+            startIcon={<ExitToAppIcon />}
+          >
+            Logout
+          </Button>
+
+          <Button className={classes.button} startIcon={<CloudUploadIcon />}>
+            <Link style={{ textDecoration: 'none', color: 'white'}} to="/upload-pattern">Upload</Link>
+          </Button>
+
+          <Button className={classes.button} startIcon={<SearchIcon />}>
+            <Link style={{ textDecoration: 'none', color: 'white'}} to="/search">Search by designer</Link>
+          </Button>
+        </ButtonGroup>
       ) : (
-        <Button image={login} onClick={signIn} label="Login" />
-      )}<Link to="/search">
-      <Button image={searchimg} label="Search by designer" />
-    </Link>
+        <ButtonGroup
+          variant="contained"
+          color="primary"
+          aria-label="contained primary button group"
+        >
+          <Button
+            className={classes.button}
+            onClick={signIn}
+            startIcon={<AssignmentIndIcon />}
+          >
+            Login
+          </Button>
+
+          <Button className={classes.button} startIcon={<SearchIcon />}>
+            <Link style={{ textDecoration: 'none', color: 'white'}} to="/search">Search by designer </Link>
+          </Button>
+        </ButtonGroup>
+      )}
     </div>
   );
 };
