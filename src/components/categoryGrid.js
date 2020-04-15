@@ -10,14 +10,17 @@ const CategoryGrid = props => {
       <Link to="/clothing">
         <CategoryButton title="Clothing" />
       </Link>
-      <Link to="/walls">
-        <CategoryButton title="Walls" />
-      </Link>
       <Link to="/floors">
         <CategoryButton title="Floors" />
       </Link>
+      <Link to="/paths">
+        <CategoryButton title="Paths" />
+      </Link>
       <Link to="/signs">
         <CategoryButton title="Signs" />
+      </Link>
+      <Link to="/walls">
+        <CategoryButton title="Walls" />
       </Link>
     </div>
   );

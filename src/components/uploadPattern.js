@@ -216,6 +216,16 @@ const UploadDesign = () => {
             />
             <span className={styles.checkmark}></span> Sign
           </label>
+          <label className={styles.checkContainer} htmlFor="category5">
+            <input
+              type="checkbox"
+              id="category5"
+              name="category"
+              value="Path"
+              onChange={categoryHandler}
+            />
+            <span className={styles.checkmark}></span> Path
+          </label>
         </div>
       </div>
       {/* CATEGORIES */}
