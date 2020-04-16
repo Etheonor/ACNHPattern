@@ -1,16 +1,18 @@
 .categoryButton {
-  background-color: whitesmoke;
+  background-color: white;
   height: 150px;
-  width: 150px;
+  width: 300px;
   text-align: center;
   display: flex;
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   transition: 0.1s ease-in;
+  margin: 25px;
+  
   
   h2 {
-    margin: auto;
+    margin: auto auto auto 1em;
     text-decoration: none !important;
   }
   
@@ -18,4 +20,11 @@
 
 .categoryButton:hover{
   scale: 0.95;
+}
+
+.categoryImg {
+  max-width: 100px;
+  max-height: 100px;
+  text-align: center;
+  margin:auto 0 auto auto;
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./pageSubtitle.module.scss";
+import Paper from '@material-ui/core/Paper';
 
 const pageSubtitle = (props) => {
   return (
-    <div className={styles.pageSubtitle}>
-      <h2>The place to share and find cool patterns!</h2>
-    </div>
+    <Paper className={styles.paper}>
+      <h2>{props.title}</h2>
+    </Paper>
   );
 };
 

@@ -10,11 +10,6 @@ const Header = ({ siteTitle }) => {
     <header className={styles.header}>
       <div className={styles.title}>
         <User />
-        <h1>
-          <Link to="/" className={styles.link}>
-            <img src={logo} alt={siteTitle} />
-          </Link>
-        </h1>
       </div>
     </header>
   );

@@ -55,7 +55,7 @@ const SearchDesigner = props => {
           <h2>Search Designer</h2>
           <div className={styles.inputForm}>
             <label htmlFor="site-search">
-              Find a designer with his/her designer tag
+              Find a designer with a designer tag
             </label>
             <div className={styles.buttonSearchGroup}>
               <input

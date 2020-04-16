@@ -7,14 +7,19 @@
 }
 
 .footerMenu {
-  margin: auto 0 auto 15px;
+  margin: auto 0 0 15px;
 }
 
 .donate {
-  margin: auto 15px auto auto;
+  margin: auto 15px 0 auto;
   transition: 0.1s ease-in;
 
   form {
     margin: auto;
   }
+}
+
+.boy {
+ max-width: 100px;
+  margin: auto 0 0 auto;
 }
