@@ -237,34 +237,42 @@ const User = () => {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Tooltip
-                  TransitionComponent={Zoom}
-                  title="Search by designer"
-                  aria-label="search"
-                >
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/search"
-                  >
-                    <SearchIcon />
-                  </Link>
-                </Tooltip>
-              </IconButton>
-              <Tooltip
-                TransitionComponent={Zoom}
-                title="Upload a new design"
-                aria-label="upload"
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  margin: "auto",
+                }}
+                to="/search"
               >
                 <IconButton color="inherit">
-                  <Link
-                    style={{ textDecoration: "none", color: "white" }}
-                    to="/upload-pattern"
+                  <Tooltip
+                    TransitionComponent={Zoom}
+                    title="Search by designer"
+                    aria-label="search"
                   >
-                    <CloudUploadIcon />
-                  </Link>
+                    <SearchIcon />
+                  </Tooltip>
                 </IconButton>
-              </Tooltip>
+              </Link>
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  margin: "auto",
+                }}
+                to="/upload-pattern"
+              >
+                <Tooltip
+                  TransitionComponent={Zoom}
+                  title="Upload a new design"
+                  aria-label="upload"
+                >
+                  <IconButton color="inherit">
+                    <CloudUploadIcon />
+                  </IconButton>
+                </Tooltip>
+              </Link>
               {state.user ? (
                 <MenuItem onClick={signOut}>
                   <IconButton color="inherit">

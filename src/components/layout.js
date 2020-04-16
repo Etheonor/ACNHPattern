@@ -12,14 +12,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
 
 import Header from "./structuralComponents/header";
 import Footer from "./structuralComponents/footer";
 import styles from "./layout.module.scss";
 import Helmet from "react-helmet";
 
-import PageSubtitle from "./structuralComponents/pageSubtitle";
 
 const theme = createMuiTheme({
   palette: {
