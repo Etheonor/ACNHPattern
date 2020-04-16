@@ -37,7 +37,19 @@ const signIn = callback => {
 				userName: result.user.displayName,
 				userMail: result.user.email
       });*/
-      window.location.reload(true);
+      console.log(result.user.uid);
+
+      db.collection("Users")
+        .doc(result.user.uid)
+        .set(
+          {
+            username: result.user.displayName,
+          },
+          { merge: true }
+        )
+        .then(function() {
+          window.location.reload(true)
+        });
       return result;
     })
     .then(callback)
@@ -69,9 +81,9 @@ const writePattern = patternObject => {
   db.collection("UserPatterns")
     .doc("creatorCodes")
     .update({
-      creatorCodes: firebase.firestore.FieldValue.arrayUnion(
-        {user: patternObject.creatorCode}
-      ),
+      creatorCodes: firebase.firestore.FieldValue.arrayUnion({
+        user: patternObject.creatorCode,
+      }),
     });
 };
 

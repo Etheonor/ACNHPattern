@@ -81,7 +81,7 @@ const DisplayPatterns = props => {
             className={styles.masonGrid}
             columnClassName={styles.masonColumn}
           >
-            {currentCards.map((value, index) => {
+            { currentCards ? currentCards.map((value, index) => {
               return (
                 <PatternCard
                   key={index}
@@ -97,7 +97,7 @@ const DisplayPatterns = props => {
                   updatePatterns={retrievePatterns}
                 />
               );
-            })}
+            }) : <p>Loading...</p>}
           </Masonry>
         </div>
       </InfiniteScroll>

@@ -11,6 +11,7 @@ const PatternCard = props => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
   const patternRef = db.collection("UserPatterns").doc(props.object);
+
   const increment = firebase.firestore.FieldValue.increment(1);
   const [like, setLike] = useState({
     isLiked: user ? props.likes.includes(user.uid) : false,
@@ -30,9 +31,13 @@ const PatternCard = props => {
 
   const addLike = () => {
     if (user !== null && props.likes.includes(user.uid) === false) {
+      const userLikes = db.collection("Users").doc(user.uid);
       patternRef.update({
         likes: firebase.firestore.FieldValue.arrayUnion(user.uid),
         likeCount: increment,
+      });
+      userLikes.update({
+        likes: firebase.firestore.FieldValue.arrayUnion(props.object),
       });
 
       setLike({
@@ -51,7 +56,11 @@ const PatternCard = props => {
 
         <div>
           <h3 className={styles.patternTitle}>{props.designName}</h3>
-          {props.desc && <div className={styles.desc}><p>{props.desc}</p></div>}
+          {props.desc && (
+            <div className={styles.desc}>
+              <p>{props.desc}</p>
+            </div>
+          )}
           <div className={`${styles.item} ${styles.likes}`}>
             {user ? (
               like.isLiked ? (

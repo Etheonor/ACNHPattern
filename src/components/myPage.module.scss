@@ -1,0 +1,29 @@
+h2 {
+  text-align: center;
+}
+
+.inputForm {
+  margin: auto;
+  max-width: 500px;
+  font-size: 120%;
+  
+  input {
+    
+    float: left;
+    width: 100%;
+    min-height: 45px;
+    outline: none;
+    resize: none;
+    border: 1px solid grey;
+    font-size: 120%;
+    font-family: "Quicksand";
+  }
+}
+.buttonSearchGroup {
+  margin-top:20px;
+}
+
+.displayPatterns {
+  display:flex;
+  flex-wrap: wrap;
+}
