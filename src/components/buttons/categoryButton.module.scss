@@ -1,5 +1,5 @@
 .categoryButton {
-  background-color: whitesmoke;
+  background-color: white;
   height: 150px;
   width: 150px;
   text-align: center;
@@ -8,6 +8,7 @@
   -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
   transition: 0.1s ease-in;
+  margin: 25px;
   
   h2 {
     margin: auto;
