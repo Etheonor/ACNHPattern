@@ -9,7 +9,7 @@ const Signs = () => (
   <Layout>
     <SEO title="Signs patterns" />
     <h2 className={styles.pageTitle}>Signs</h2>
-    <DisplayPatterns category="Signs" />
+    <DisplayPatterns category="Sign" />
   </Layout>
 );
 
