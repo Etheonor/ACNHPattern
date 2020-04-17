@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import loadingIcon from "../icons/System/loader-4-line.svg";
 import uploadIcon from "../icons/System/upload-cloud-2-line.svg";
+import Resizer from 'react-image-file-resizer';
 
 //IMPORT MATERIAL UI
 import Button from "@material-ui/core/Button";
@@ -39,6 +40,21 @@ const UploadDesign = () => {
       color: theme.palette.text.secondary,
     },
   }));
+
+  const reduceFile = file => {
+    Resizer.imageFileResizer(
+      file,
+      500,
+      286,
+      'JPEG',
+      65,
+      0,
+      uri => {
+          uploadImg(uri)
+      },
+      'blob'
+  );
+  }
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
@@ -74,7 +90,7 @@ const UploadDesign = () => {
 
     if (input.files !== undefined) {
       for (let i = 0; i < input.files.length; i++) {
-        uploadImg(input.files[i]);
+        reduceFile(input.files[i]);
       }
 
       //uploadImg(input.files);

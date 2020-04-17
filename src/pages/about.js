@@ -3,6 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import styles from "./pages.module.scss";
+import Paper from '@material-ui/core/Paper';
 
 const About = () => (
   <Layout>
