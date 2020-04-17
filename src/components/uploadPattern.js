@@ -44,10 +44,10 @@ const UploadDesign = () => {
   const reduceFile = file => {
     Resizer.imageFileResizer(
       file,
-      500,
-      286,
+      600,
+      400,
       'JPEG',
-      65,
+      80,
       0,
       uri => {
           uploadImg(uri)
@@ -58,7 +58,8 @@ const UploadDesign = () => {
 
   const uploadImg = file => {
     // Create a reference to 'mountains.jpg'
-    const task = firebase
+    if (img.length < 5) {
+      const task = firebase
       .storage()
       .ref("images/")
       .child("pattern" + Date.now() + Math.floor(Math.random() * 10000))
@@ -83,6 +84,8 @@ const UploadDesign = () => {
         });
       }
     );
+    }
+   
   };
 
   const onChangeHandler = () => {
