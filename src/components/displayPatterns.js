@@ -6,7 +6,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Masonry from "react-masonry-css";
 
 const db = firebase.firestore();
-const ref = db.collection("UserPatterns");
 
 const DisplayPatterns = props => {
   const [currentCards, setCurrentCards] = useState([]);
@@ -14,32 +13,25 @@ const DisplayPatterns = props => {
     first: {},
     last: {},
   });
-
   const patternPerPage = 6;
 
-  const patterns = ref
-    .where("patternCat", "array-contains", props.category)
-    .orderBy("likeCount", "desc")
-    .limit(patternPerPage);
+  const initialData = ref => {
+    return ref.limit(patternPerPage);
+  };
+  // const myPage = db.collection("Users").doc(user.uid);
 
-  const fetchMoreData = () => {
-    retrievePatterns(
-      ref
-        .where("patternCat", "array-contains", props.category)
-        .orderBy("likeCount", "desc")
-        .startAfter(docIndex.last)
-        .limitToLast(patternPerPage)
-    );
+  const fetchMoreData = ref => {
+    retrievePatterns(ref.startAfter(docIndex.last).limitToLast(patternPerPage));
   };
 
   useEffect(
     () => {
-      retrievePatterns();
+      retrievePatterns(initialData(props.collection));
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
-  const retrievePatterns = (ref = patterns) => {
+  const retrievePatterns = ref => {
     const newState = [...currentCards];
     ref
       .get()
@@ -63,7 +55,7 @@ const DisplayPatterns = props => {
     default: 3,
     1920: 3,
     1440: 2,
-    1000: 1
+    1000: 1,
   };
 
   return (
@@ -72,7 +64,7 @@ const DisplayPatterns = props => {
       <InfiniteScroll
         className={styles.infinite}
         dataLength={currentCards.length}
-        next={fetchMoreData}
+        next={() => fetchMoreData(props.collection)}
         hasMore={true}
       >
         <div className={styles.container}>
@@ -81,23 +73,27 @@ const DisplayPatterns = props => {
             className={styles.masonGrid}
             columnClassName={styles.masonColumn}
           >
-            { currentCards ? currentCards.map((value, index) => {
-              return (
-                <PatternCard
-                  key={index}
-                  user={value.user}
-                  creatorCode={value.creatorCode}
-                  designCode={value.designCode}
-                  patternImage={value.patternImage}
-                  designName={value.designName}
-                  likes={value.likes}
-                  desc={value.description}
-                  likeCount={value.likeCount}
-                  object={value.id}
-                  updatePatterns={retrievePatterns}
-                />
-              );
-            }) : <p>Loading...</p>}
+            {currentCards ? (
+              currentCards.map((value, index) => {
+                return (
+                  <PatternCard
+                    key={index}
+                    user={value.user}
+                    creatorCode={value.creatorCode}
+                    designCode={value.designCode}
+                    patternImage={value.patternImage}
+                    designName={value.designName}
+                    likes={value.likes}
+                    desc={value.description}
+                    likeCount={value.likeCount}
+                    object={value.id}
+                    updatePatterns={retrievePatterns}
+                  />
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
           </Masonry>
         </div>
       </InfiniteScroll>

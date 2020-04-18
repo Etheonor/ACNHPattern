@@ -28,6 +28,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 
 import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 
 import Typography from "@material-ui/core/Typography";
 import Menu from "@material-ui/core/Menu";
@@ -155,6 +156,19 @@ const User = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      {state.user && (
+        <MenuItem>
+          <IconButton color="inherit">
+            <Link
+              style={{ textDecoration: "none", color: "black" }}
+              to="/myfavorites"
+            >
+              <FavoriteIcon />
+            </Link>
+          </IconButton>
+          <p>Favorite</p>
+        </MenuItem>
+      )}
       <MenuItem>
         <IconButton color="inherit">
           <Link style={{ textDecoration: "none", color: "black" }} to="/search">
@@ -237,6 +251,26 @@ const User = () => {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              {state.user && (
+                <Link
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    margin: "auto",
+                  }}
+                  to="/myfavorites"
+                >
+                  <IconButton color="inherit">
+                    <Tooltip
+                      TransitionComponent={Zoom}
+                      title="My Favorite patterns"
+                      aria-label="favorite"
+                    >
+                      <FavoriteIcon />
+                    </Tooltip>
+                  </IconButton>
+                </Link>
+              )}
               <Link
                 style={{
                   textDecoration: "none",

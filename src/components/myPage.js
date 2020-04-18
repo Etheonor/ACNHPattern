@@ -1,60 +1,54 @@
-import React, { useState, useEffect } from "react";
-import styles from "./searchDesigner.module.scss";
+import React, { useState, useEffect, useContext } from "react";
+import styles from "./myPage.module.scss";
 import { firebase } from "../API/Firebase";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PatternCard from "./patternCard";
-import Button from "./buttons/button";
+import PatternCard from "../components/patternCard";
 
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../context/GlobalContextProvider";
 const db = firebase.firestore();
 const user = firebase.auth().currentUser;
 
-
 const MyPageComp = props => {
-  const [cards, setCards] = useState([]);
+  const dispatch = useContext(GlobalDispatchContext);
+  const state = useContext(GlobalStateContext);
+  const [newCards, setNewCards] = useState([]);
+  const [test, setTest] = useState([]);
 
   useEffect(
     () => {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          display(user);
-        } else {
-        }
-      });
+      if (state.user) {
+        display();
+      }
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [state.user]
   );
 
-  const display = user => {
-    let newState = [...cards];
-    db.collection("Users")
-      .doc(user.uid)
+  const display = () => {
+    let newState = [...newCards];
+    db.collection("UserPatterns")
+      .where("likes", "array-contains", state.user.uid)
+      .orderBy("likeCount", "desc")
       .get()
       .then(result => {
-        return result.data().likes;
-      })
-      .then(result => {
-        result.map(el => {
-          db.collection("UserPatterns")
-            .doc(el)
-            .get()
-            .then(result => {
-              newState.push(result.data());
-              newState[newState.length - 1].id = result.id;
-              return newState
-            })
-            .then((result) => {
-              setCards(result);
-            });
+        result.forEach(function(doc) {
+          // doc.data() is never undefined for query doc snapshots
+          newState.push(doc.data());
+          newState[newState.length - 1].id = doc.id;
         });
+        setNewCards(newState);
       });
   };
 
   return (
     <div>
-      {cards ? (
-        <div>
-          {cards.map((value, index) => {
+      <h2>💕 My Favorites</h2>
+      <div className={styles.displayPatterns}>
+        {newCards ? (
+          newCards.map((value, index) => {
             return (
               <PatternCard
                 key={index}
@@ -64,13 +58,16 @@ const MyPageComp = props => {
                 patternImage={value.patternImage}
                 designName={value.designName}
                 likes={value.likes}
+                desc={value.description}
                 likeCount={value.likeCount}
                 object={value.id}
               />
             );
-          })}
-        </div>
-      ) : null}
+          })
+        ) : (
+          <p>TEST</p>
+        )}
+      </div>
     </div>
   );
 };
