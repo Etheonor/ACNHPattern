@@ -56,25 +56,7 @@ const MyPageComp = props => {
 
   return (
     <div>
-      {test ? (
-        <div>
-          {cards.map((value, index) => {
-            return (
-              <PatternCard
-                key={index}
-                user={value.user}
-                creatorCode={value.creatorCode}
-                designCode={value.designCode}
-                patternImage={value.patternImage}
-                designName={value.designName}
-                likes={value.likes}
-                likeCount={value.likeCount}
-                object={value.id}
-              />
-            );
-          })}
-        </div>
-      ) : <p>Lol.</p>}
+        <h2>My page</h2>
     </div>
   );
 };

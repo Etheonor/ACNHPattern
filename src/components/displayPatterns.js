@@ -13,30 +13,25 @@ const DisplayPatterns = props => {
     first: {},
     last: {},
   });
-
-  const ref = db
-    .collection("UserPatterns")
-    .where("patternCat", "array-contains", props.category)
-    .orderBy("likeCount", "desc");
-
- // const myPage = db.collection("Users").doc(user.uid);
-
   const patternPerPage = 6;
 
-  const patterns = ref.limit(patternPerPage);
+  const initialData = ref => {
+    return ref.limit(patternPerPage);
+  };
+  // const myPage = db.collection("Users").doc(user.uid);
 
-  const fetchMoreData = () => {
+  const fetchMoreData = ref => {
     retrievePatterns(ref.startAfter(docIndex.last).limitToLast(patternPerPage));
   };
 
   useEffect(
     () => {
-      retrievePatterns();
+      retrievePatterns(initialData(props.collection));
     }, // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
-  const retrievePatterns = (ref = patterns) => {
+  const retrievePatterns = ref => {
     const newState = [...currentCards];
     ref
       .get()
@@ -69,7 +64,7 @@ const DisplayPatterns = props => {
       <InfiniteScroll
         className={styles.infinite}
         dataLength={currentCards.length}
-        next={fetchMoreData}
+        next={() => fetchMoreData(props.collection)}
         hasMore={true}
       >
         <div className={styles.container}>
